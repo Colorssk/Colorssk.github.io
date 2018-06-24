@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>hexo+github(blog)</title>
+  <title>js中this指向分析 | hexo+github(blog)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一言以概之：函数的调用方式决定了this指向（在函数调用的时候确定的）  普通函数调用有三种：  直接调用 方法调用 new调用  直接调用 通过函数名（）方式调用，此时this指向全局对象，浏览器中是window，NodeJs中是global 栗子： 12345const _global = typeof window ===&quot;undefined&quot;?global:window;function">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo+github(blog)">
+<meta property="og:title" content="js中this指向分析">
 <meta property="og:url" content="http://yoursite.com/2018/06/23/js中的this指向问题/index.html">
 <meta property="og:site_name" content="hexo+github(blog)">
 <meta property="og:description" content="一言以概之：函数的调用方式决定了this指向（在函数调用的时候确定的）  普通函数调用有三种：  直接调用 方法调用 new调用  直接调用 通过函数名（）方式调用，此时this指向全局对象，浏览器中是window，NodeJs中是global 栗子： 12345const _global = typeof window ===&quot;undefined&quot;?global:window;function">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-24T08:31:03.756Z">
+<meta property="og:updated_time" content="2018-06-24T09:00:27.349Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo+github(blog)">
+<meta name="twitter:title" content="js中this指向分析">
 <meta name="twitter:description" content="一言以概之：函数的调用方式决定了this指向（在函数调用的时候确定的）  普通函数调用有三种：  直接调用 方法调用 new调用  直接调用 通过函数名（）方式调用，此时this指向全局对象，浏览器中是window，NodeJs中是global 栗子： 12345const _global = typeof window ===&quot;undefined&quot;?global:window;function">
   
     <link rel="alternative" href="/atom.xml" title="hexo+github(blog)" type="application/atom+xml">
@@ -156,6 +156,21 @@
           <div id="js-content" class="content-ll">
             <article id="post-js中的this指向问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js中this指向分析
+    </h1>
+  
+
+        
+        <a href="/2018/06/23/js中的this指向问题/" class="archive-article-date">
+  	<time datetime="2018-06-23T09:42:27.623Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-23</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -322,7 +337,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          闭包和匿名函数
         
       </div>
     </a>
