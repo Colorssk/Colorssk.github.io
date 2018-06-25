@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>hexo+github(blog)</title>
+  <title>obclick和addEventListen的区别 | hexo+github(blog)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="[JS] addEventListener和onclick的区别1234567891011121314151617181920212223242526272829303132333435363738394041424344454647function a()&amp;#123;     alert(&quot;A&quot;);  &amp;#125;   var b = function()&amp;#123;      alert(&quot;B">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo+github(blog)">
+<meta property="og:title" content="obclick和addEventListen的区别">
 <meta property="og:url" content="http://yoursite.com/2018/06/25/obclick和addEventListen的区别/index.html">
 <meta property="og:site_name" content="hexo+github(blog)">
 <meta property="og:description" content="[JS] addEventListener和onclick的区别1234567891011121314151617181920212223242526272829303132333435363738394041424344454647function a()&amp;#123;     alert(&quot;A&quot;);  &amp;#125;   var b = function()&amp;#123;      alert(&quot;B">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-25T11:38:21.173Z">
+<meta property="og:updated_time" content="2018-06-25T11:54:39.019Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo+github(blog)">
+<meta name="twitter:title" content="obclick和addEventListen的区别">
 <meta name="twitter:description" content="[JS] addEventListener和onclick的区别1234567891011121314151617181920212223242526272829303132333435363738394041424344454647function a()&amp;#123;     alert(&quot;A&quot;);  &amp;#125;   var b = function()&amp;#123;      alert(&quot;B">
   
     <link rel="alternative" href="/atom.xml" title="hexo+github(blog)" type="application/atom+xml">
@@ -157,6 +157,21 @@
             <article id="post-obclick和addEventListen的区别" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      obclick和addEventListen的区别
+    </h1>
+  
+
+        
+        <a href="/2018/06/25/obclick和addEventListen的区别/" class="archive-article-date">
+  	<time datetime="2018-06-25T11:38:17.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="JS-addEventListener和onclick的区别"><a href="#JS-addEventListener和onclick的区别" class="headerlink" title="[JS] addEventListener和onclick的区别"></a>[JS] addEventListener和onclick的区别</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line"></span><br><span class="line">   alert(<span class="string">"A"</span>);  </span><br><span class="line"></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line"></span><br><span class="line">    alert(<span class="string">"B"</span>)  </span><br><span class="line"></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">dom.onclick=a  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">dom.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line"></span><br><span class="line">    b()   </span><br><span class="line"></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">//失效  </span></span><br><span class="line"></span><br><span class="line">dom.onclick=alert(<span class="string">""</span>);  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">dom.addEventListener(<span class="string">"click"</span>,a)  </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">dom.addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line"></span><br><span class="line">    b()  </span><br><span class="line"></span><br><span class="line">&#125;)  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">//先执行B，再执行A</span></span><br></pre></td></tr></table></figure>
@@ -256,7 +271,7 @@
   
   
     <a href="/2018/06/25/cs/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">css</div>
       <i class="icon-circle-right"></i>
     </a>
   
