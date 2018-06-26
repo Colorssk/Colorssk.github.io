@@ -152,8 +152,186 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js中for of和for in的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/26/js中for of和for in的区别/">js中for of和for in的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/26/js中for of和for in的区别/" class="archive-article-date">
+  	<time datetime="2018-06-26T09:11:12.196Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>简单说，for in是遍历键名，for of是遍历键值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">"a"</span>,<span class="string">"b"</span>];</span><br><span class="line"><span class="keyword">for</span> (a <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//1,2</span></span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="keyword">for</span> (a <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//a,b</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于for of的这个特性，它还可以实现对iterator对象的遍历，而for in就是简单的遍历</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/26/js中for of和for in的区别/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-async+await" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/26/async+await/">拓展：async+await</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/26/async+await/" class="archive-article-date">
+  	<time datetime="2018-06-26T07:44:52.355Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="async-await"><a href="#async-await" class="headerlink" title="async+await"></a>async+await</h1><hr>
+<p>其实继promise已经解决了回调嵌套的不优雅的局限性，之后为了更显艺术风格，所以衍生了async+await(笑o(∩_∩)o )</p>
+<p>我接触到async+await是从认识到洋葱圈模型，先上栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>)</span><br><span class="line"><span class="keyword">const</span> app =<span class="keyword">new</span> koa() </span><br><span class="line"></span><br><span class="line"><span class="comment">//输出135642</span></span><br><span class="line">app.use(<span class="keyword">async</span>(ctx,next)=&gt;&#123;</span><br><span class="line">	ctx.body = <span class="string">'1'</span></span><br><span class="line">       <span class="comment">//下一个中间件，一定要写，才能到下一个组价</span></span><br><span class="line">        next()</span><br><span class="line">	ctx.body  += ‘<span class="number">2</span>’</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span>(ctx,next)=&gt;&#123;</span><br><span class="line">	ctx.body = <span class="string">'3'</span></span><br><span class="line">       <span class="comment">//下一个中间件，一定要写，才能到下一个组价</span></span><br><span class="line">        next()</span><br><span class="line">	ctx.body  += ‘<span class="number">4</span>’</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span>(ctx,next)=&gt;&#123;</span><br><span class="line">	ctx.body = <span class="string">'5'</span></span><br><span class="line">       <span class="comment">//下一个中间件，一定要写，才能到下一个组价</span></span><br><span class="line">        next()</span><br><span class="line">	ctx.body  += ‘<span class="number">6</span>’</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>执行结果：1，3，5，6，4，2</p>
+<p>通过执行结果大概也就能理解为啥是洋葱了吧</p>
+<p>下面来理解一下</p>
+<p>await必须配合async使用，但是await的对象可以不是promise对象，一个普通的函数也可以使用</p>
+<p>这个async函数返回的是一个promise对象</p>
+<p>而如果await等到的不是一个promise对象，那await表达式的运算结果就是它等到的东西</p>
+<p>而如果等到的是一个promise对象，await就会阻塞后面的代码，等值async返回的promise对象resolve,然后得到resolve的值，作为await的运算结果，因为async不会造成阻塞所以也就async+await也就影响不到外部</p>
+<p>举个栗子加深下印象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delay</span>(<span class="params">word</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;<span class="comment">//这里让await等到的是promise对象</span></span><br><span class="line">	setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">	resolve(<span class="string">'hello'</span>+word)<span class="comment">//resolve的是一个结果</span></span><br><span class="line">	&#125;,<span class="number">2000</span>)	</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">const</span> word1 = <span class="keyword">await</span> delay(<span class="string">'aaa'</span>)<span class="comment">//等待这个执行，等到以后获取的是resolve的值</span></span><br><span class="line">	<span class="built_in">console</span>.log(word1) <span class="comment">//具体执行</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">const</span> word2 = <span class="keyword">await</span> delay(<span class="string">'bbb'</span>)<span class="comment">//等待这个执行</span></span><br><span class="line">	<span class="built_in">console</span>.log(word2) <span class="comment">//具体执行</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">const</span> word3 = <span class="keyword">await</span> delay(<span class="string">'ccc'</span>)<span class="comment">//等待这个执行</span></span><br><span class="line">	<span class="built_in">console</span>.log(word3) <span class="comment">//具体执行</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">const</span> word4 = <span class="keyword">await</span> delay(<span class="string">'ddd'</span>)<span class="comment">//等待这个执行</span></span><br><span class="line">	<span class="built_in">console</span>.log(word4) <span class="comment">//具体执行</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：先两秒后输出 helloaaa</span><br><span class="line">      再两秒输出 hellobbb</span><br><span class="line">      再两秒输出 helloccc</span><br><span class="line">      再两秒输出 helloddd</span><br></pre></td></tr></table></figure>
+<p>然后在举个栗子做个拓展;</p>
+<p>说明 async 会将其后的函数（函数表达式或 Lambda）的返回值封装成一个 Promise 对象，而 await 会等待这个 Promise 完成，并将其 resolve 的结果返回出来。</p>
+<p>用 setTimeout 模拟耗时的异步操作，先来看看不用 async/await 会怎么写</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">takeLongTime</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> resolve(<span class="string">"long_time_value"</span>), <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">takeLongTime().then(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"got"</span>, v);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果改用 async/await 呢，会是这样</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">takeLongTime</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> resolve(<span class="string">"long_time_value"</span>), <span class="number">1000</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> v = <span class="keyword">await</span> takeLongTime();<span class="comment">//await获取promise.resolve的结果</span></span><br><span class="line">    <span class="built_in">console</span>.log(v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<p>其实两者实现的效果是一样的</p>
+<p>那么问题来了，那async/await 的优势又在哪里呢</p>
+<h4 id="async-await-的优势在于处理then-链"><a href="#async-await-的优势在于处理then-链" class="headerlink" title="async/await 的优势在于处理then 链"></a>async/await 的优势在于处理then 链</h4><p>单一的 Promise 链并不能发现 async/await 的优势，但是，如果需要处理由多个 Promise 组成的 then 链的时候，优势就能体现出来了（很有意思，Promise 通过 then 链来解决多层回调的问题，现在又用 async/await 来进一步优化它）。</p>
+<p>假设一个业务，分多个步骤完成，每个步骤都是异步的，而且依赖于上一个步骤的结果。我们仍然用 setTimeout 来模拟异步操作：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 传入参数 n，表示这个函数执行的时间（毫秒）</span></span><br><span class="line"><span class="comment"> * 执行的结果是 n + 200，这个值将用于下一步骤</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">takeLongTime</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> resolve(n + <span class="number">200</span>), n);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step1</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`step1 with <span class="subst">$&#123;n&#125;</span>`</span>);</span><br><span class="line">    <span class="keyword">return</span> takeLongTime(n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step2</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`step2 with <span class="subst">$&#123;n&#125;</span>`</span>);</span><br><span class="line">    <span class="keyword">return</span> takeLongTime(n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step3</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`step3 with <span class="subst">$&#123;n&#125;</span>`</span>);</span><br><span class="line">    <span class="keyword">return</span> takeLongTime(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>先用 Promise 方式来实现这三个步骤的处理</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doIt</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.time(<span class="string">"doIt"</span>);</span><br><span class="line">    <span class="keyword">const</span> time1 = <span class="number">300</span>;</span><br><span class="line">    step1(time1)</span><br><span class="line">        .then(<span class="function"><span class="params">time2</span> =&gt;</span> step2(time2))</span><br><span class="line">        .then(<span class="function"><span class="params">time3</span> =&gt;</span> step3(time3))</span><br><span class="line">        .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`result is <span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="built_in">console</span>.timeEnd(<span class="string">"doIt"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doIt();</span><br><span class="line"></span><br><span class="line"><span class="comment">// c:\var\test&gt;node --harmony_async_await .</span></span><br><span class="line"><span class="comment">// step1 with 300</span></span><br><span class="line"><span class="comment">// step2 with 500</span></span><br><span class="line"><span class="comment">// step3 with 700</span></span><br><span class="line"><span class="comment">// result is 900</span></span><br><span class="line"><span class="comment">// doIt: 1507.251ms</span></span><br></pre></td></tr></table></figure>
+<p>如果用 async/await 来实现呢，会是这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">async function doIt() &#123;</span><br><span class="line">    console.time(&quot;doIt&quot;);</span><br><span class="line">    const time1 = 300;</span><br><span class="line">    const time2 = await step1(time1);</span><br><span class="line">    const time3 = await step2(time2);</span><br><span class="line">    const result = await step3(time3);</span><br><span class="line">    console.log(`result is $&#123;result&#125;`);</span><br><span class="line">    console.timeEnd(&quot;doIt&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doIt();</span><br></pre></td></tr></table></figure>
+<p>看这样是不是很有调理了，是不优雅不少</p>
+<hr>
+<p>补充一下：</p>
+<p>await 命令后面的 Promise 对象，运行结果可能是 rejected，所以最好把 await 命令放在 try…catch 代码块中。</p>
+<p>并且await 命令只能用在 async 函数之中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> somethingThatReturnsAPromise();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另一种写法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">await</span> somethingThatReturnsAPromise().catch(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果确实希望多个请求并发执行，可以使用 Promise.all 方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">dbFuc</span>(<span class="params">db</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> docs = [&#123;&#125;, &#123;&#125;, &#123;&#125;];</span><br><span class="line">  <span class="keyword">let</span> promises = docs.map(<span class="function">(<span class="params">doc</span>) =&gt;</span> db.post(doc));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> results = <span class="keyword">await</span> <span class="built_in">Promise</span>.all(promises);</span><br><span class="line">  <span class="built_in">console</span>.log(results);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者使用下面的写法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">dbFuc</span>(<span class="params">db</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> docs = [&#123;&#125;, &#123;&#125;, &#123;&#125;];</span><br><span class="line">  <span class="keyword">let</span> promises = docs.map(<span class="function">(<span class="params">doc</span>) =&gt;</span> db.post(doc));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> results = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> promise <span class="keyword">of</span> promises) &#123;</span><br><span class="line">    results.push(<span class="keyword">await</span> promise);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(results);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/26/async+await/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-promise" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/26/promise/">Promise</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/26/promise/" class="archive-article-date">
+  	<time datetime="2018-06-26T06:25:50.481Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -603,7 +781,7 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">Google</span>][<span class="symbol"></span>]</span><br><span class="line">And then define the link:</span><br><span class="line"></span><br><span class="line">[<span class="symbol">Google</span>]: <span class="link">http://google.com/</span></span><br></pre></td></tr></table></figure>
 <p>In typora click link will expand it for editing, command+click will open the hyperlink in web browser.</p>
 <h3 id="URLs"><a href="#URLs" class="headerlink" title="URLs"></a>URLs</h3><p>Typora allows you to insert urls as links, wrapped by <code>&lt;</code>brackets<code>&gt;</code>.</p>
-<p><code>&lt;i@typora.io&gt;</code> becomes <a href="mailto:&#x69;&#x40;&#x74;&#x79;&#112;&#111;&#x72;&#x61;&#46;&#x69;&#x6f;" target="_blank" rel="noopener">&#x69;&#x40;&#x74;&#x79;&#112;&#111;&#x72;&#x61;&#46;&#x69;&#x6f;</a>.</p>
+<p><code>&lt;i@typora.io&gt;</code> becomes <a href="mailto:&#105;&#64;&#x74;&#121;&#112;&#111;&#x72;&#97;&#x2e;&#x69;&#111;" target="_blank" rel="noopener">&#105;&#64;&#x74;&#121;&#112;&#111;&#x72;&#97;&#x2e;&#x69;&#111;</a>.</p>
 <p>Typora will aslo auto link standard URLs. e.g: <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a>.</p>
 <h3 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h3><p>Image looks similar with links, but it requires an additional <code>!</code> char before the start of link. Image syntax looks like this:</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">Alt text</span>](<span class="link">/path/to/img.jpg</span>)</span><br><span class="line"></span><br><span class="line">![<span class="string">Alt text</span>](<span class="link">/path/to/img.jpg "Optional title"</span>)</span><br></pre></td></tr></table></figure>
@@ -894,205 +1072,10 @@
 
 
   
-    <article id="post-js中的this指向问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/23/js中的this指向问题/">js中this指向分析</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/23/js中的this指向问题/" class="archive-article-date">
-  	<time datetime="2018-06-23T09:42:27.623Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一言以概之：函数的调用方式决定了this指向（在函数调用的时候确定的）</p>
-<hr>
-<p>普通函数调用有三种：</p>
-<ul>
-<li>直接调用</li>
-<li>方法调用</li>
-<li>new调用</li>
-</ul>
-<h2 id="直接调用"><a href="#直接调用" class="headerlink" title="直接调用"></a>直接调用</h2><hr>
-<p>通过<em>函数名（）</em>方式调用，此时this指向全局对象，浏览器中是window，NodeJs中是global</p>
-<p>栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> _global = <span class="keyword">typeof</span> <span class="built_in">window</span> ===<span class="string">"undefined"</span>?global:<span class="built_in">window</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>===_global);<span class="comment">//true</span></span><br><span class="line">&#125;</span><br><span class="line">test();<span class="comment">//这里解释直接调用</span></span><br></pre></td></tr></table></figure>
-<p><strong>注意点：</strong>直接调用的指向问题不局限于全局函数，在任何作用域下面上直接通过函数名字调用都属于直接调用</p>
-<p>栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">_global</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//通过IIFE 限定作用域</span></span><br><span class="line">       <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        	<span class="built_in">console</span>.log(<span class="keyword">this</span> === _global);  <span class="comment">// true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    test();     <span class="comment">// 非全局作用域下的直接调用</span></span><br><span class="line">&#125;)(<span class="keyword">typeof</span> <span class="built_in">window</span> === <span class="string">"undefined"</span> ? global : <span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="特例："><a href="#特例：" class="headerlink" title="特例："></a>特例：</h4><h4 id="bind-对直接调用的影响"><a href="#bind-对直接调用的影响" class="headerlink" title="bind() 对直接调用的影响"></a>bind() 对直接调用的影响</h4><p><code>Function.prototype.bind()</code> 的作用是将当前函数与指定的对象绑定，并返回一个新函数，这个新函数无论以什么样的方式调用，其 <code>this</code> 始终指向绑定的对象</p>
-<p>栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> testObj = test.bind(obj);</span><br><span class="line">test();     <span class="comment">// false，正常的直接调用this===window或global</span></span><br><span class="line">testObj();  <span class="comment">// true,用bind（）把对象绑定在函数上，生成新函数，函数内部this指向绑定的对象</span></span><br></pre></td></tr></table></figure>
-<h4 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h4><h4 id="apply-与call-的区别"><a href="#apply-与call-的区别" class="headerlink" title="apply()与call()的区别"></a>apply()与call()的区别</h4><p>apply:方法能劫持另外一个对象的方法，继承另外一个对象的属性.，this指针指向劫持的对象</p>
-<p>格式：</p>
-<p>Function.apply(obj,args)方法能接收两个参数</p>
-<p>call:和apply的意思一样,只不过是参数列表不一样：</p>
-<p>Function.call(obj,[param1[,param2[,…[,paramN]]]])<br>obj：这个对象将代替Function类里this对象<br>params：这个是一个参数列表</p>
-<p>apply的栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt; </span><br><span class="line"><span class="comment">/*定义一个人类*/</span> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>) </span>&#123; </span><br><span class="line"><span class="keyword">this</span>.name=name; <span class="keyword">this</span>.age=age; </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">/*定义一个学生类*/</span> </span><br><span class="line">functionStudent(name,age,grade) &#123; </span><br><span class="line">Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>); <span class="keyword">this</span>.grade=grade; <span class="comment">//person劫持了student对象代表了student</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//创建一个学生类 </span></span><br><span class="line"><span class="keyword">var</span> student=<span class="keyword">new</span> Student(<span class="string">"qian"</span>,<span class="number">21</span>,<span class="string">"一年级"</span>); <span class="comment">//可以用父类person的构造</span></span><br><span class="line"><span class="comment">//测试 </span></span><br><span class="line">alert(<span class="string">"name:"</span>+student.name+<span class="string">"\n"</span>+<span class="string">"age:"</span>+student.age+<span class="string">"\n"</span>+<span class="string">"grade:"</span>+student.grade); </span><br><span class="line"><span class="comment">//大家可以看到测试结果name:qian age:21 grade:一年级 </span></span><br><span class="line"><span class="comment">//学生类里面我没有给name和age属性赋值啊,为什么又存在这两个属性的值呢,这个就是apply的神奇之处. </span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>分析</strong> ：Person.apply(this,arguments);</p>
-<p>this:在创建对象在这个时候代表的是student（个人认为相当于继承的感觉）</p>
-<p>arguments:是一个数组,也就是[“qian”,”21”,”一年级”];</p>
-<p>也就是通俗一点讲就是:用student去执行Person这个类里面的内容,在Person这个类里面存在this.name等之类的语句,这样就将属性创建到了student对象里面</p>
-<p>call示例</p>
-<p>在Studen函数里面可以将apply中修改成如下:</p>
-<p>Person.call(this,name,age);</p>
-<p>什么情况下用apply,什么情况下用call</p>
-<p>在给对象参数的情况下,如果参数的形式是数组的时候,比如apply示例里面传递了参数arguments,这个参数是数组类型,并且在调用Person的时候参数的列表是对应一致的(也就是Person和Student的参数列表前两位是一致的) 就可以采用 apply , 如果我的Person的参数列表是这样的(age,name),而Student的参数列表是(name,age,grade),这样就可以用call来实现了,也就是直接指定参数列表对应值的位置(Person.call(this,age,name,grade));</p>
-<h4 id="apply-的巧用"><a href="#apply-的巧用" class="headerlink" title="apply()的巧用"></a>apply()的巧用</h4><ul>
-<li>Math.max 可以实现得到数组中最大的一项</li>
-</ul>
-<p>因为Math.max 参数里面不支持Math.max([param1,param2]) 也就是数组</p>
-<p>但是它支持Math.max(param1,param2,param3…),所以可以根据刚才apply的那个特点来解决 var max=Math.max.apply(null,array),这样轻易的可以得到一个数组中最大的一项  </p>
-<ul>
-<li><p>Array.prototype.push 可以实现两个数组合并</p>
-<p>同样push方法没有提供push一个数组,但是它提供了push(param1,param,…paramN) 所以同样也可以通过apply来装换一下这个数组,即:</p>
-<p>vararr1=new Array(“1”,”2”,”3”);<br>vararr2=new Array(“4”,”5”,”6”);<br>Array.prototype.push.apply(arr1,arr2);</p>
-<p>也可以这样理解,arr1调用了push方法,参数是通过apply将数组装换为参数列表的集合.</p>
-</li>
-</ul>
-<h1 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h1><hr>
-<p>方法调用是指通过对象来调用其方法函数，它是 对象.方法函数（…） 这样的调用形式。这种情况下，函数中的 this  指向调用该方法的对象。但是，同样需要注意 bind() 的影响。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对象，有test方法（属性）</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="comment">// 第一种方式，定义对象的时候定义其方法</span></span><br><span class="line">    test() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//给对象的属性赋值test2方法</span></span><br><span class="line"><span class="comment">// 第二种方式，对象定义好之后为其附加一个方法(函数表达式)</span></span><br><span class="line">obj.test2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第三种方式和第二种方式原理相同</span></span><br><span class="line"><span class="comment">// 是对象定义好之后为其附加一个方法(函数定义)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">t</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">&#125;</span><br><span class="line">obj.test3 = t;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这也是为对象附加一个方法函数</span></span><br><span class="line"><span class="comment">// 但是这个函数绑定了一个不是 obj 的其它对象</span></span><br><span class="line">obj.test4 = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">&#125;).bind(&#123;&#125;);</span><br><span class="line"></span><br><span class="line">obj.test();     <span class="comment">// true</span></span><br><span class="line">obj.test2();    <span class="comment">// true</span></span><br><span class="line">obj.test3();    <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 受 bind() 影响，test4 中的 this 指向不是 obj</span></span><br><span class="line">obj.test4();    <span class="comment">// false  object！=obj</span></span><br></pre></td></tr></table></figure>
-<p>切记this的宗旨是指向调用它的对象</p>
-<p>栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    test() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> t = obj.test;<span class="comment">//这是引用，没有调用</span></span><br><span class="line">t();    <span class="comment">// false，此时的this指向了全局</span></span><br></pre></td></tr></table></figure>
-<p>下面给个通过bind（）来解决jquery中因为绑定事件带了的有关this指针上的bug</p>
-<p>原栗:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Handlers</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 这里 $button 假设是一个指向某个按钮的 jQuery 对象</span></span><br><span class="line">    <span class="keyword">constructor</span>(data, $button) &#123;<span class="comment">//这是构造器</span></span><br><span class="line">        <span class="keyword">this</span>.data = data;<span class="comment">//相当于全局的变量</span></span><br><span class="line">        $button.on(<span class="string">"click"</span>, <span class="keyword">this</span>.onButtonClick);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onButtonClick(e) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> handlers = <span class="keyword">new</span> Handlers(<span class="string">"string data"</span>, $(<span class="string">"#someButton"</span>));</span><br><span class="line"><span class="comment">// 对 #someButton 进行点击操作之后</span></span><br><span class="line"><span class="comment">// 输出 undefined</span></span><br><span class="line"><span class="comment">// 但预期是输出 string data</span></span><br></pre></td></tr></table></figure>
-<p>分析：</p>
-<p><code>this.onButtonClick</code> 作为一个参数传入 <code>on()</code> 之后，事件触发时，理论上是对这个函数进行的直接调用，而不是方法调用，所以其中的 <code>this</code> 会指向全局对象 —— 但实际上由于调用事件处理函数的时候，<code>this</code> 指向会绑定到￥button上,</p>
-<p>(注意：<code>this</code> 并非 jQuery 对象)，即 <code>$button.get(0)</code>(注意代码前注释中的假设)。</p>
-<p>解决（用bind()改变this指向）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是在 es5 中的解决办法之一</span></span><br><span class="line"><span class="keyword">var</span> _this = <span class="keyword">this</span>;<span class="comment">//先把指针指向全局的保存下来</span></span><br><span class="line">$button.on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    _this.onButtonClick();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 也可以通过 bind() 来解决</span></span><br><span class="line">$button.on(<span class="string">"click"</span>, <span class="keyword">this</span>.onButtonClick.bind(<span class="keyword">this</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// es6 中可以通过箭头函数来处理，在 jQuery 中慎用</span></span><br><span class="line">$button.on(<span class="string">"click"</span>, e =&gt; <span class="keyword">this</span>.onButtonClick(e));<span class="comment">//这种方式比较优雅（匿名函数直接会调用，相当于指向了全局）jQuery 无法改变箭头函数的 this 指向，同样的语句语义完全不同。</span></span><br></pre></td></tr></table></figure>
-<h4 id="下面说说箭头函数中的-this"><a href="#下面说说箭头函数中的-this" class="headerlink" title="下面说说箭头函数中的 this"></a>下面说说箭头函数中的 this</h4><p>箭头数没有自己的 <code>this</code> 绑定。箭头函数中使用的 <code>this</code>，其实是直接包含它的那个函数或函数表达式中的 <code>this</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    test() &#123;</span><br><span class="line">        <span class="keyword">const</span> arrow = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 这里的 this 是 test() 中的 this，函数赋值给arrow，arrow被test包含，所以this就             // 是test中的this</span></span><br><span class="line">            <span class="comment">// 由 test() 的调用方式决定</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">        &#125;;</span><br><span class="line">        arrow();</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    getArrow() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 这里的 this 是 getArrow() 中的 this，</span></span><br><span class="line">            <span class="comment">// 由 getArrow() 的调用方式决定</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.test();     <span class="comment">// true 这个调用让test中的this指向obj，而test中的this又和箭头函数中的一样</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arrow = obj.getArrow();<span class="comment">//obj调用所以this指向obj</span></span><br><span class="line">arrow();        <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<h4 id="总结下"><a href="#总结下" class="headerlink" title="总结下"></a>总结下</h4><p>es6之后箭头函数所带来的好处就是：</p>
-<p>箭头函数让大家在使用闭包的时候不需要太纠结 <code>this</code>，不需要通过像 <code>_this</code> 这样的局部变量来临时引用 <code>this</code> 给闭包函数使用。</p>
-<p>补充：</p>
-<p>箭头函数不能用 <code>new</code> 调用，不能 <code>bind()</code> 到某个对象(虽然 <code>bind()</code> 方法调用没问题，但是不会产生预期效果)。不管在什么情况下使用箭头函数，它本身是没有绑定 <code>this</code> 的，它用的是直接外层函数(即包含它的最近的一层函数或函数表达式)绑定的 <code>this</code>。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/23/js中的this指向问题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/23/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/23/hello-world/" class="archive-article-date">
-  	<time datetime="2018-06-23T04:56:02.082Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/23/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 

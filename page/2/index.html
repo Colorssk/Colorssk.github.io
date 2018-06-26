@@ -6,19 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Promise | hexo+github(blog)</title>
+  <title>hexo+github(blog)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="promise此处是根据vue-music总结的promise的一种用法； 先来个开胃小菜：一个简单的栗子： 12345678910111213141516171819202122function delay(word)&amp;#123;	return new Promise((resolve,reject)=&amp;gt;&amp;#123;//你看都要return出去的，就是promise的定义	setTimeo">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Promise">
-<meta property="og:url" content="http://yoursite.com/2018/06/26/promise/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="hexo+github(blog)">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="hexo+github(blog)">
-<meta property="og:description" content="promise此处是根据vue-music总结的promise的一种用法； 先来个开胃小菜：一个简单的栗子： 12345678910111213141516171819202122function delay(word)&amp;#123;	return new Promise((resolve,reject)=&amp;gt;&amp;#123;//你看都要return出去的，就是promise的定义	setTimeo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-26T07:43:51.744Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Promise">
-<meta name="twitter:description" content="promise此处是根据vue-music总结的promise的一种用法； 先来个开胃小菜：一个简单的栗子： 12345678910111213141516171819202122function delay(word)&amp;#123;	return new Promise((resolve,reject)=&amp;gt;&amp;#123;//你看都要return出去的，就是promise的定义	setTimeo">
+<meta name="twitter:title" content="hexo+github(blog)">
   
     <link rel="alternative" href="/atom.xml" title="hexo+github(blog)" type="application/atom+xml">
   
@@ -154,68 +150,97 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-promise" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-js中的this指向问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      Promise
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/23/js中的this指向问题/">js中this指向分析</a>
     </h1>
   
 
         
-        <a href="/2018/06/26/promise/" class="archive-article-date">
-  	<time datetime="2018-06-26T06:25:50.481Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
+        <a href="/2018/06/23/js中的this指向问题/" class="archive-article-date">
+  	<time datetime="2018-06-23T09:42:27.623Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h1><p>此处是根据vue-music总结的promise的一种用法；</p>
-<h4 id="先来个开胃小菜："><a href="#先来个开胃小菜：" class="headerlink" title="先来个开胃小菜："></a>先来个开胃小菜：</h4><p>一个简单的栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delay</span>(<span class="params">word</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;<span class="comment">//你看都要return出去的，就是promise的定义</span></span><br><span class="line">	setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">	resolve(<span class="string">'hello'</span>+word)</span><br><span class="line">	&#125;,<span class="number">2000</span>)	</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">delay(<span class="string">'aaa'</span>)<span class="comment">//然后调用</span></span><br><span class="line">	.then(<span class="function">(<span class="params">word</span>)=&gt;</span>&#123;<span class="comment">//这些回调的执行的执行都是同级的，非嵌套</span></span><br><span class="line">	 <span class="built_in">console</span>.log(word)</span><br><span class="line">	<span class="keyword">return</span> delay(<span class="string">'bbb'</span>)<span class="comment">//这里的return只是为了让继续实例化一个delay,而return之后才能继续调用事件队列里面的方法	</span></span><br><span class="line"> 	&#125;)</span><br><span class="line">	.then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">	 <span class="built_in">console</span>.log(word)</span><br><span class="line">	 <span class="keyword">return</span> delay(<span class="string">'ccc'</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	.then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">	 <span class="built_in">console</span>.log(word)</span><br><span class="line">	 <span class="keyword">return</span> delay(<span class="string">'ddd'</span>)</span><br><span class="line">	</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="然后是一个关于jsonp跨域拉数据的栗子："><a href="#然后是一个关于jsonp跨域拉数据的栗子：" class="headerlink" title="然后是一个关于jsonp跨域拉数据的栗子："></a>然后是一个关于jsonp跨域拉数据的栗子：</h4><p>这个是分装后的方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> originJsonp <span class="keyword">from</span> <span class="string">'jsonp'</span><span class="comment">//这个依赖还是需要的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">jsonp</span>(<span class="params">url, data, option</span>) </span>&#123;<span class="comment">//这样export，导入就不需要&#123;&#125;了</span></span><br><span class="line">  url += (url.indexOf(<span class="string">'?'</span>) &lt; <span class="number">0</span> ? <span class="string">'?'</span> : <span class="string">'&amp;'</span>) + param(data)<span class="comment">//这里就是拼接一下url</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;<span class="comment">//这里实例化的promised对面就只为完成jsonp的跨域   //请求</span></span><br><span class="line">    originJsonp(url, option, (err, data) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (!err) &#123;</span><br><span class="line">        resolve(data)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">param</span>(<span class="params">data</span>) </span>&#123;<span class="comment">//因为在同一js下面所以只需要export即可</span></span><br><span class="line">  <span class="keyword">let</span> url = <span class="string">''</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> data) &#123;</span><br><span class="line">    <span class="keyword">let</span> value = data[k] !== <span class="literal">undefined</span> ? data[k] : <span class="string">''</span></span><br><span class="line">    url += <span class="string">'&amp;'</span> + k + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(value)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> url ? url.substring(<span class="number">1</span>) : <span class="string">''</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后再分装一层调用这jsonp请求的方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jsonp <span class="keyword">from</span> <span class="string">'common/js/jsonp'</span></span><br><span class="line"><span class="keyword">import</span> &#123;commonParams, options&#125; <span class="keyword">from</span> <span class="string">'./config'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getSingerList</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="string">'https://c.y.qq.com/v8/fcg-bin/v8.fcg'</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> data = <span class="built_in">Object</span>.assign(&#123;&#125;, commonParams, &#123;</span><br><span class="line">    channel: <span class="string">'singer'</span>,</span><br><span class="line">    page: <span class="string">'list'</span>,</span><br><span class="line">    key: <span class="string">'all_all_all'</span>,</span><br><span class="line">    pagesize: <span class="number">100</span>,</span><br><span class="line">    pagenum: <span class="number">1</span>,</span><br><span class="line">    hostUin: <span class="number">0</span>,</span><br><span class="line">    needNewCode: <span class="number">0</span>,</span><br><span class="line">    platform: <span class="string">'yqq'</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> jsonp(url, data, options)<span class="comment">//传入参数以后再抛出这个方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后是执行jsonp的回调函数，也就是执行异步操作中的微任务</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;getSingerList&#125; <span class="keyword">from</span> <span class="string">'api/singer'</span><span class="comment">//要加｛｝,所以可以多个</span></span><br><span class="line"></span><br><span class="line">_getSingerList() &#123;</span><br><span class="line">      getSingerList().then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;<span class="comment">//.then执行微任务（回调函数）</span></span><br><span class="line">        <span class="keyword">if</span> (res.code === ERR_OK) &#123;<span class="comment">//回调的一个参数，提示取到数据与否</span></span><br><span class="line">          <span class="keyword">this</span>.singers = <span class="keyword">this</span>._normalizeSinger(res.data.list)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-<p>上面这个jsonp跨域的三步骤：定义 new promise{jsonp跨域}-&gt;实例化（传入参数）-&gt;执行微任务（处理回调返回的数据）：getSingerList().then</p>
-<h4 id="再加一餐，比如说是axios跨域获取数据（相比较与jsonp的跨域请求这里可以绕过reffer）"><a href="#再加一餐，比如说是axios跨域获取数据（相比较与jsonp的跨域请求这里可以绕过reffer）" class="headerlink" title="再加一餐，比如说是axios跨域获取数据（相比较与jsonp的跨域请求这里可以绕过reffer）"></a>再加一餐，比如说是axios跨域获取数据（相比较与jsonp的跨域请求这里可以绕过reffer）</h4><p>在vue-cli + webpack创建的项目中，在webpack.dev.conf.js中</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">'axios'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> apiRoutes = express.Router()</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/api'</span>, apiRoutes)<span class="comment">//导入日常操作的一些依赖，用于存放获取的数据，虽然和异步没啥关系</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">devServer: &#123;</span><br><span class="line">after(app)&#123;</span><br><span class="line">  app.get(<span class="string">'/api/getDiscList'</span>,(req,res)=&gt;&#123;<span class="comment">//创建路径，回调是放入数据</span></span><br><span class="line">  <span class="keyword">var</span> url = <span class="string">'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'</span></span><br><span class="line">    axios.get(url, &#123;</span><br><span class="line">      headers: &#123;</span><br><span class="line">        referer: <span class="string">'https://y.qq.com/portal/playlist.html'</span>,</span><br><span class="line">        host:<span class="string">'c.y.qq.com'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      params: req.query  <span class="comment">//这是请求的query </span></span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//response是api地址返回的，数据在data里。</span></span><br><span class="line">      res.json(response.data)<span class="comment">//数据还是要处理一下才能用的</span></span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(e)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  app.get(<span class="string">'/api/getDiscListNew'</span>,(req,res)=&gt;&#123;<span class="comment">//和上面一样就不讲解了</span></span><br><span class="line">  <span class="keyword">var</span> url = <span class="string">'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'</span></span><br><span class="line">    axios.get(url, &#123;</span><br><span class="line">      headers: &#123;</span><br><span class="line">        referer: <span class="string">'https://y.qq.com/portal/playlist.html'</span>,</span><br><span class="line">        host:<span class="string">'c.y.qq.com'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      params: req.query  <span class="comment">//这是请求的query </span></span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;<span class="comment">//return new promise 出来的具体实现</span></span><br><span class="line">    <span class="comment">//response是api地址返回的，数据在data里。</span></span><br><span class="line">      res.json(response.data)</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(e)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>不同点是axios是在编译一开始就拉取了数据，但是却把数据放在了一个路由下面，然后要调用的时候去拉取和分析这段json数据（res.json）</p>
-<p>还是第一步先return new promise</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jsonp <span class="keyword">from</span> <span class="string">'common/js/jsonp'</span></span><br><span class="line"><span class="keyword">import</span> &#123;commonParams, options&#125; <span class="keyword">from</span> <span class="string">'./config'</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span><span class="comment">//是在本地路由获取数据，axios也可以用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getDiscList</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="string">'/api/getDiscList'</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> data = <span class="built_in">Object</span>.assign(&#123;&#125;, commonParams, &#123;</span><br><span class="line">    platform: <span class="string">'yqq'</span>,</span><br><span class="line">    hostUin: <span class="number">0</span>,</span><br><span class="line">    sin: <span class="number">0</span>,</span><br><span class="line">    ein: <span class="number">29</span>,</span><br><span class="line">    sortId: <span class="number">5</span>,</span><br><span class="line">    needNewCode: <span class="number">0</span>,</span><br><span class="line">    categoryId: <span class="number">169</span>,</span><br><span class="line">    rnd: <span class="built_in">Math</span>.random(),</span><br><span class="line">    format: <span class="string">'json'</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> axios.get(url, &#123;</span><br><span class="line">    params: data</span><br><span class="line">  &#125;).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(res.data)<span class="comment">//既然你有需求要用自然最后还是需要return promise的resolve（你实例化的一个promise自然就需要resolve（也就是要作为微任务等待以后异步处理））</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后自然就是处理微任务，处理回调回来的数据</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;getRecommend, getDiscList,getDiscListNew&#125; <span class="keyword">from</span> <span class="string">'api/recommend'</span></span><br><span class="line"></span><br><span class="line">_getDiscList() &#123;</span><br><span class="line">      getDiscList().then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (res.code === ERR_OK) &#123;</span><br><span class="line">          <span class="keyword">this</span>.discList = res.data.list</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>续：还有关于统一处理回调函数.all方法的一些拓展  to be continued</p>
+        <p>一言以概之：函数的调用方式决定了this指向（在函数调用的时候确定的）</p>
+<hr>
+<p>普通函数调用有三种：</p>
+<ul>
+<li>直接调用</li>
+<li>方法调用</li>
+<li>new调用</li>
+</ul>
+<h2 id="直接调用"><a href="#直接调用" class="headerlink" title="直接调用"></a>直接调用</h2><hr>
+<p>通过<em>函数名（）</em>方式调用，此时this指向全局对象，浏览器中是window，NodeJs中是global</p>
+<p>栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> _global = <span class="keyword">typeof</span> <span class="built_in">window</span> ===<span class="string">"undefined"</span>?global:<span class="built_in">window</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>===_global);<span class="comment">//true</span></span><br><span class="line">&#125;</span><br><span class="line">test();<span class="comment">//这里解释直接调用</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意点：</strong>直接调用的指向问题不局限于全局函数，在任何作用域下面上直接通过函数名字调用都属于直接调用</p>
+<p>栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">_global</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//通过IIFE 限定作用域</span></span><br><span class="line">       <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        	<span class="built_in">console</span>.log(<span class="keyword">this</span> === _global);  <span class="comment">// true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    test();     <span class="comment">// 非全局作用域下的直接调用</span></span><br><span class="line">&#125;)(<span class="keyword">typeof</span> <span class="built_in">window</span> === <span class="string">"undefined"</span> ? global : <span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="特例："><a href="#特例：" class="headerlink" title="特例："></a>特例：</h4><h4 id="bind-对直接调用的影响"><a href="#bind-对直接调用的影响" class="headerlink" title="bind() 对直接调用的影响"></a>bind() 对直接调用的影响</h4><p><code>Function.prototype.bind()</code> 的作用是将当前函数与指定的对象绑定，并返回一个新函数，这个新函数无论以什么样的方式调用，其 <code>this</code> 始终指向绑定的对象</p>
+<p>栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> testObj = test.bind(obj);</span><br><span class="line">test();     <span class="comment">// false，正常的直接调用this===window或global</span></span><br><span class="line">testObj();  <span class="comment">// true,用bind（）把对象绑定在函数上，生成新函数，函数内部this指向绑定的对象</span></span><br></pre></td></tr></table></figure>
+<h4 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h4><h4 id="apply-与call-的区别"><a href="#apply-与call-的区别" class="headerlink" title="apply()与call()的区别"></a>apply()与call()的区别</h4><p>apply:方法能劫持另外一个对象的方法，继承另外一个对象的属性.，this指针指向劫持的对象</p>
+<p>格式：</p>
+<p>Function.apply(obj,args)方法能接收两个参数</p>
+<p>call:和apply的意思一样,只不过是参数列表不一样：</p>
+<p>Function.call(obj,[param1[,param2[,…[,paramN]]]])<br>obj：这个对象将代替Function类里this对象<br>params：这个是一个参数列表</p>
+<p>apply的栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt; </span><br><span class="line"><span class="comment">/*定义一个人类*/</span> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>) </span>&#123; </span><br><span class="line"><span class="keyword">this</span>.name=name; <span class="keyword">this</span>.age=age; </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">/*定义一个学生类*/</span> </span><br><span class="line">functionStudent(name,age,grade) &#123; </span><br><span class="line">Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>); <span class="keyword">this</span>.grade=grade; <span class="comment">//person劫持了student对象代表了student</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//创建一个学生类 </span></span><br><span class="line"><span class="keyword">var</span> student=<span class="keyword">new</span> Student(<span class="string">"qian"</span>,<span class="number">21</span>,<span class="string">"一年级"</span>); <span class="comment">//可以用父类person的构造</span></span><br><span class="line"><span class="comment">//测试 </span></span><br><span class="line">alert(<span class="string">"name:"</span>+student.name+<span class="string">"\n"</span>+<span class="string">"age:"</span>+student.age+<span class="string">"\n"</span>+<span class="string">"grade:"</span>+student.grade); </span><br><span class="line"><span class="comment">//大家可以看到测试结果name:qian age:21 grade:一年级 </span></span><br><span class="line"><span class="comment">//学生类里面我没有给name和age属性赋值啊,为什么又存在这两个属性的值呢,这个就是apply的神奇之处. </span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>分析</strong> ：Person.apply(this,arguments);</p>
+<p>this:在创建对象在这个时候代表的是student（个人认为相当于继承的感觉）</p>
+<p>arguments:是一个数组,也就是[“qian”,”21”,”一年级”];</p>
+<p>也就是通俗一点讲就是:用student去执行Person这个类里面的内容,在Person这个类里面存在this.name等之类的语句,这样就将属性创建到了student对象里面</p>
+<p>call示例</p>
+<p>在Studen函数里面可以将apply中修改成如下:</p>
+<p>Person.call(this,name,age);</p>
+<p>什么情况下用apply,什么情况下用call</p>
+<p>在给对象参数的情况下,如果参数的形式是数组的时候,比如apply示例里面传递了参数arguments,这个参数是数组类型,并且在调用Person的时候参数的列表是对应一致的(也就是Person和Student的参数列表前两位是一致的) 就可以采用 apply , 如果我的Person的参数列表是这样的(age,name),而Student的参数列表是(name,age,grade),这样就可以用call来实现了,也就是直接指定参数列表对应值的位置(Person.call(this,age,name,grade));</p>
+<h4 id="apply-的巧用"><a href="#apply-的巧用" class="headerlink" title="apply()的巧用"></a>apply()的巧用</h4><ul>
+<li>Math.max 可以实现得到数组中最大的一项</li>
+</ul>
+<p>因为Math.max 参数里面不支持Math.max([param1,param2]) 也就是数组</p>
+<p>但是它支持Math.max(param1,param2,param3…),所以可以根据刚才apply的那个特点来解决 var max=Math.max.apply(null,array),这样轻易的可以得到一个数组中最大的一项  </p>
+<ul>
+<li><p>Array.prototype.push 可以实现两个数组合并</p>
+<p>同样push方法没有提供push一个数组,但是它提供了push(param1,param,…paramN) 所以同样也可以通过apply来装换一下这个数组,即:</p>
+<p>vararr1=new Array(“1”,”2”,”3”);<br>vararr2=new Array(“4”,”5”,”6”);<br>Array.prototype.push.apply(arr1,arr2);</p>
+<p>也可以这样理解,arr1调用了push方法,参数是通过apply将数组装换为参数列表的集合.</p>
+</li>
+</ul>
+<h1 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h1><hr>
+<p>方法调用是指通过对象来调用其方法函数，它是 对象.方法函数（…） 这样的调用形式。这种情况下，函数中的 this  指向调用该方法的对象。但是，同样需要注意 bind() 的影响。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对象，有test方法（属性）</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="comment">// 第一种方式，定义对象的时候定义其方法</span></span><br><span class="line">    test() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//给对象的属性赋值test2方法</span></span><br><span class="line"><span class="comment">// 第二种方式，对象定义好之后为其附加一个方法(函数表达式)</span></span><br><span class="line">obj.test2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第三种方式和第二种方式原理相同</span></span><br><span class="line"><span class="comment">// 是对象定义好之后为其附加一个方法(函数定义)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">t</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">&#125;</span><br><span class="line">obj.test3 = t;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这也是为对象附加一个方法函数</span></span><br><span class="line"><span class="comment">// 但是这个函数绑定了一个不是 obj 的其它对象</span></span><br><span class="line">obj.test4 = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">&#125;).bind(&#123;&#125;);</span><br><span class="line"></span><br><span class="line">obj.test();     <span class="comment">// true</span></span><br><span class="line">obj.test2();    <span class="comment">// true</span></span><br><span class="line">obj.test3();    <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 受 bind() 影响，test4 中的 this 指向不是 obj</span></span><br><span class="line">obj.test4();    <span class="comment">// false  object！=obj</span></span><br></pre></td></tr></table></figure>
+<p>切记this的宗旨是指向调用它的对象</p>
+<p>栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    test() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> t = obj.test;<span class="comment">//这是引用，没有调用</span></span><br><span class="line">t();    <span class="comment">// false，此时的this指向了全局</span></span><br></pre></td></tr></table></figure>
+<p>下面给个通过bind（）来解决jquery中因为绑定事件带了的有关this指针上的bug</p>
+<p>原栗:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Handlers</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 这里 $button 假设是一个指向某个按钮的 jQuery 对象</span></span><br><span class="line">    <span class="keyword">constructor</span>(data, $button) &#123;<span class="comment">//这是构造器</span></span><br><span class="line">        <span class="keyword">this</span>.data = data;<span class="comment">//相当于全局的变量</span></span><br><span class="line">        $button.on(<span class="string">"click"</span>, <span class="keyword">this</span>.onButtonClick);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onButtonClick(e) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> handlers = <span class="keyword">new</span> Handlers(<span class="string">"string data"</span>, $(<span class="string">"#someButton"</span>));</span><br><span class="line"><span class="comment">// 对 #someButton 进行点击操作之后</span></span><br><span class="line"><span class="comment">// 输出 undefined</span></span><br><span class="line"><span class="comment">// 但预期是输出 string data</span></span><br></pre></td></tr></table></figure>
+<p>分析：</p>
+<p><code>this.onButtonClick</code> 作为一个参数传入 <code>on()</code> 之后，事件触发时，理论上是对这个函数进行的直接调用，而不是方法调用，所以其中的 <code>this</code> 会指向全局对象 —— 但实际上由于调用事件处理函数的时候，<code>this</code> 指向会绑定到￥button上,</p>
+<p>(注意：<code>this</code> 并非 jQuery 对象)，即 <code>$button.get(0)</code>(注意代码前注释中的假设)。</p>
+<p>解决（用bind()改变this指向）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是在 es5 中的解决办法之一</span></span><br><span class="line"><span class="keyword">var</span> _this = <span class="keyword">this</span>;<span class="comment">//先把指针指向全局的保存下来</span></span><br><span class="line">$button.on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    _this.onButtonClick();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 也可以通过 bind() 来解决</span></span><br><span class="line">$button.on(<span class="string">"click"</span>, <span class="keyword">this</span>.onButtonClick.bind(<span class="keyword">this</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// es6 中可以通过箭头函数来处理，在 jQuery 中慎用</span></span><br><span class="line">$button.on(<span class="string">"click"</span>, e =&gt; <span class="keyword">this</span>.onButtonClick(e));<span class="comment">//这种方式比较优雅（匿名函数直接会调用，相当于指向了全局）jQuery 无法改变箭头函数的 this 指向，同样的语句语义完全不同。</span></span><br></pre></td></tr></table></figure>
+<h4 id="下面说说箭头函数中的-this"><a href="#下面说说箭头函数中的-this" class="headerlink" title="下面说说箭头函数中的 this"></a>下面说说箭头函数中的 this</h4><p>箭头数没有自己的 <code>this</code> 绑定。箭头函数中使用的 <code>this</code>，其实是直接包含它的那个函数或函数表达式中的 <code>this</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    test() &#123;</span><br><span class="line">        <span class="keyword">const</span> arrow = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 这里的 this 是 test() 中的 this，函数赋值给arrow，arrow被test包含，所以this就             // 是test中的this</span></span><br><span class="line">            <span class="comment">// 由 test() 的调用方式决定</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">        &#125;;</span><br><span class="line">        arrow();</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    getArrow() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 这里的 this 是 getArrow() 中的 this，</span></span><br><span class="line">            <span class="comment">// 由 getArrow() 的调用方式决定</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span> === obj);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.test();     <span class="comment">// true 这个调用让test中的this指向obj，而test中的this又和箭头函数中的一样</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arrow = obj.getArrow();<span class="comment">//obj调用所以this指向obj</span></span><br><span class="line">arrow();        <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h4 id="总结下"><a href="#总结下" class="headerlink" title="总结下"></a>总结下</h4><p>es6之后箭头函数所带来的好处就是：</p>
+<p>箭头函数让大家在使用闭包的时候不需要太纠结 <code>this</code>，不需要通过像 <code>_this</code> 这样的局部变量来临时引用 <code>this</code> 给闭包函数使用。</p>
+<p>补充：</p>
+<p>箭头函数不能用 <code>new</code> 调用，不能 <code>bind()</code> 到某个对象(虽然 <code>bind()</code> 方法调用没问题，但是不会产生预期效果)。不管在什么情况下使用箭头函数，它本身是没有绑定 <code>this</code> 的，它用的是直接外层函数(即包含它的最近的一层函数或函数表达式)绑定的 <code>this</code>。</p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -224,84 +249,16 @@
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/23/js中的this指向问题/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/26/promise/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/06/26/async+await/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          拓展：async+await
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/06/26/异步/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">异步</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -321,14 +278,83 @@
 
 
 
-  
-  
-  
 
   
-
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/23/hello-world/">Hello World</a>
+    </h1>
   
 
+        
+        <a href="/2018/06/23/hello-world/" class="archive-article-date">
+  	<time datetime="2018-06-23T04:56:02.082Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/23/hello-world/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -351,8 +377,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
