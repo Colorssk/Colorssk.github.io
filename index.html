@@ -152,6 +152,157 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-promise" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h1><p>此处是根据vue-music总结的promise的一种用法；</p>
+<h4 id="先来个开胃小菜："><a href="#先来个开胃小菜：" class="headerlink" title="先来个开胃小菜："></a>先来个开胃小菜：</h4><p>一个简单的栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delay</span>(<span class="params">word</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;<span class="comment">//你看都要return出去的，就是promise的定义</span></span><br><span class="line">	setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">	resolve(<span class="string">'hello'</span>+word)</span><br><span class="line">	&#125;,<span class="number">2000</span>)	</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">delay(<span class="string">'aaa'</span>)<span class="comment">//然后调用</span></span><br><span class="line">	.then(<span class="function">(<span class="params">word</span>)=&gt;</span>&#123;<span class="comment">//这些回调的执行的执行都是同级的，非嵌套</span></span><br><span class="line">	 <span class="built_in">console</span>.log(word)</span><br><span class="line">	<span class="keyword">return</span> delay(<span class="string">'bbb'</span>)<span class="comment">//这里的return只是为了让继续实例化一个delay,而return之后才能继续调用事件队列里面的方法	</span></span><br><span class="line"> 	&#125;)</span><br><span class="line">	.then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">	 <span class="built_in">console</span>.log(word)</span><br><span class="line">	 <span class="keyword">return</span> delay(<span class="string">'ccc'</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	.then(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">	 <span class="built_in">console</span>.log(word)</span><br><span class="line">	 <span class="keyword">return</span> delay(<span class="string">'ddd'</span>)</span><br><span class="line">	</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="然后是一个关于jsonp跨域拉数据的栗子："><a href="#然后是一个关于jsonp跨域拉数据的栗子：" class="headerlink" title="然后是一个关于jsonp跨域拉数据的栗子："></a>然后是一个关于jsonp跨域拉数据的栗子：</h4><p>这个是分装后的方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> originJsonp <span class="keyword">from</span> <span class="string">'jsonp'</span><span class="comment">//这个依赖还是需要的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">jsonp</span>(<span class="params">url, data, option</span>) </span>&#123;<span class="comment">//这样export，导入就不需要&#123;&#125;了</span></span><br><span class="line">  url += (url.indexOf(<span class="string">'?'</span>) &lt; <span class="number">0</span> ? <span class="string">'?'</span> : <span class="string">'&amp;'</span>) + param(data)<span class="comment">//这里就是拼接一下url</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;<span class="comment">//这里实例化的promised对面就只为完成jsonp的跨域   //请求</span></span><br><span class="line">    originJsonp(url, option, (err, data) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (!err) &#123;</span><br><span class="line">        resolve(data)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">param</span>(<span class="params">data</span>) </span>&#123;<span class="comment">//因为在同一js下面所以只需要export即可</span></span><br><span class="line">  <span class="keyword">let</span> url = <span class="string">''</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> data) &#123;</span><br><span class="line">    <span class="keyword">let</span> value = data[k] !== <span class="literal">undefined</span> ? data[k] : <span class="string">''</span></span><br><span class="line">    url += <span class="string">'&amp;'</span> + k + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(value)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> url ? url.substring(<span class="number">1</span>) : <span class="string">''</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后再分装一层调用这jsonp请求的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jsonp <span class="keyword">from</span> <span class="string">'common/js/jsonp'</span></span><br><span class="line"><span class="keyword">import</span> &#123;commonParams, options&#125; <span class="keyword">from</span> <span class="string">'./config'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getSingerList</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="string">'https://c.y.qq.com/v8/fcg-bin/v8.fcg'</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> data = <span class="built_in">Object</span>.assign(&#123;&#125;, commonParams, &#123;</span><br><span class="line">    channel: <span class="string">'singer'</span>,</span><br><span class="line">    page: <span class="string">'list'</span>,</span><br><span class="line">    key: <span class="string">'all_all_all'</span>,</span><br><span class="line">    pagesize: <span class="number">100</span>,</span><br><span class="line">    pagenum: <span class="number">1</span>,</span><br><span class="line">    hostUin: <span class="number">0</span>,</span><br><span class="line">    needNewCode: <span class="number">0</span>,</span><br><span class="line">    platform: <span class="string">'yqq'</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> jsonp(url, data, options)<span class="comment">//传入参数以后再抛出这个方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后是执行jsonp的回调函数，也就是执行异步操作中的微任务</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;getSingerList&#125; <span class="keyword">from</span> <span class="string">'api/singer'</span><span class="comment">//要加｛｝,所以可以多个</span></span><br><span class="line"></span><br><span class="line">_getSingerList() &#123;</span><br><span class="line">      getSingerList().then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;<span class="comment">//.then执行微任务（回调函数）</span></span><br><span class="line">        <span class="keyword">if</span> (res.code === ERR_OK) &#123;<span class="comment">//回调的一个参数，提示取到数据与否</span></span><br><span class="line">          <span class="keyword">this</span>.singers = <span class="keyword">this</span>._normalizeSinger(res.data.list)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<p>上面这个jsonp跨域的三步骤：定义 new promise{jsonp跨域}-&gt;实例化（传入参数）-&gt;执行微任务（处理回调返回的数据）：getSingerList().then</p>
+<h4 id="再加一餐，比如说是axios跨域获取数据（相比较与jsonp的跨域请求这里可以绕过reffer）"><a href="#再加一餐，比如说是axios跨域获取数据（相比较与jsonp的跨域请求这里可以绕过reffer）" class="headerlink" title="再加一餐，比如说是axios跨域获取数据（相比较与jsonp的跨域请求这里可以绕过reffer）"></a>再加一餐，比如说是axios跨域获取数据（相比较与jsonp的跨域请求这里可以绕过reffer）</h4><p>在vue-cli + webpack创建的项目中，在webpack.dev.conf.js中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">'axios'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> apiRoutes = express.Router()</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/api'</span>, apiRoutes)<span class="comment">//导入日常操作的一些依赖，用于存放获取的数据，虽然和异步没啥关系</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">devServer: &#123;</span><br><span class="line">after(app)&#123;</span><br><span class="line">  app.get(<span class="string">'/api/getDiscList'</span>,(req,res)=&gt;&#123;<span class="comment">//创建路径，回调是放入数据</span></span><br><span class="line">  <span class="keyword">var</span> url = <span class="string">'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'</span></span><br><span class="line">    axios.get(url, &#123;</span><br><span class="line">      headers: &#123;</span><br><span class="line">        referer: <span class="string">'https://y.qq.com/portal/playlist.html'</span>,</span><br><span class="line">        host:<span class="string">'c.y.qq.com'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      params: req.query  <span class="comment">//这是请求的query </span></span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//response是api地址返回的，数据在data里。</span></span><br><span class="line">      res.json(response.data)<span class="comment">//数据还是要处理一下才能用的</span></span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(e)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  app.get(<span class="string">'/api/getDiscListNew'</span>,(req,res)=&gt;&#123;<span class="comment">//和上面一样就不讲解了</span></span><br><span class="line">  <span class="keyword">var</span> url = <span class="string">'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'</span></span><br><span class="line">    axios.get(url, &#123;</span><br><span class="line">      headers: &#123;</span><br><span class="line">        referer: <span class="string">'https://y.qq.com/portal/playlist.html'</span>,</span><br><span class="line">        host:<span class="string">'c.y.qq.com'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      params: req.query  <span class="comment">//这是请求的query </span></span><br><span class="line">    &#125;).then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;<span class="comment">//return new promise 出来的具体实现</span></span><br><span class="line">    <span class="comment">//response是api地址返回的，数据在data里。</span></span><br><span class="line">      res.json(response.data)</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(e)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不同点是axios是在编译一开始就拉取了数据，但是却把数据放在了一个路由下面，然后要调用的时候去拉取和分析这段json数据（res.json）</p>
+<p>还是第一步先return new promise</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jsonp <span class="keyword">from</span> <span class="string">'common/js/jsonp'</span></span><br><span class="line"><span class="keyword">import</span> &#123;commonParams, options&#125; <span class="keyword">from</span> <span class="string">'./config'</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span><span class="comment">//是在本地路由获取数据，axios也可以用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getDiscList</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="string">'/api/getDiscList'</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> data = <span class="built_in">Object</span>.assign(&#123;&#125;, commonParams, &#123;</span><br><span class="line">    platform: <span class="string">'yqq'</span>,</span><br><span class="line">    hostUin: <span class="number">0</span>,</span><br><span class="line">    sin: <span class="number">0</span>,</span><br><span class="line">    ein: <span class="number">29</span>,</span><br><span class="line">    sortId: <span class="number">5</span>,</span><br><span class="line">    needNewCode: <span class="number">0</span>,</span><br><span class="line">    categoryId: <span class="number">169</span>,</span><br><span class="line">    rnd: <span class="built_in">Math</span>.random(),</span><br><span class="line">    format: <span class="string">'json'</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> axios.get(url, &#123;</span><br><span class="line">    params: data</span><br><span class="line">  &#125;).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(res.data)<span class="comment">//既然你有需求要用自然最后还是需要return promise的resolve（你实例化的一个promise自然就需要resolve（也就是要作为微任务等待以后异步处理））</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后自然就是处理微任务，处理回调回来的数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;getRecommend, getDiscList,getDiscListNew&#125; <span class="keyword">from</span> <span class="string">'api/recommend'</span></span><br><span class="line"></span><br><span class="line">_getDiscList() &#123;</span><br><span class="line">      getDiscList().then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (res.code === ERR_OK) &#123;</span><br><span class="line">          <span class="keyword">this</span>.discList = res.data.list</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>续：还有关于统一处理回调函数.all方法的一些拓展  to be continued</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/26/promise/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-异步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/26/异步/">异步</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/26/异步/" class="archive-article-date">
+  	<time datetime="2018-06-26T05:33:48.376Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="js中的异步操作"><a href="#js中的异步操作" class="headerlink" title="js中的异步操作"></a>js中的异步操作</h2><hr>
+<p>首先先要搞清楚异步和event loop，这个event loop是js的运行环境提供的机制，它和js本身没有任何关系；</p>
+<p>其次event loop说穿了就是在给某个异步任务指定了回调函数，那么这个回调函数会进入一个事件队列，这个回调不会立即执行，而是继续执行异步任务后面的代码，但当异步任务被触发的时候，这是线程就会调用事件队列里面的这个回调函数，待执行完后执行刚才停止处以后的代码</p>
+<p>看了上面的总结一下异步执行的运行机制</p>
+<p>1：所有任务都在主线程上执行，形成一个执行棧</p>
+<p>2：主线程之外，存在一个任务队列，只要异步任务有了运行结果，就在任务队列放置一个事件</p>
+<p>3：一旦执行棧中所有同步任务执行完毕，系统就会读取任务队列，那些对应的异步任务，结束等待状态，进入棧并开始执行</p>
+<p>4：主线程不断重复上面的第三步</p>
+<p>（上面的四步骤，和一开始总结的其实是一个道理，就是容易看一点）</p>
+<hr>
+<h4 id="宏任务与微任务"><a href="#宏任务与微任务" class="headerlink" title="宏任务与微任务"></a>宏任务与微任务</h4><p> 异步分为 宏任务与微任务，不同的API注册的任务一次进入队列中，等待event loop将它们依次压入执行棧中执行</p>
+<p><strong>宏任务(macrotask)：</strong>：</p>
+<p>script(整体代码)、setTimeout、setInterval、UI 渲染、 I/O、postMessage、 MessageChannel、setImmediate(Node.js 环境)</p>
+<p><strong>微任务(microtask)：</strong></p>
+<p>Promise、 MutaionObserver、process.nextTick(Node.js环境）</p>
+<p>给张网上的图片：</p>
+<p><img src="https://segmentfault.com/img/remote/1460000015317438?w=587&amp;h=528" alt="img"></p>
+<p>下面给个栗子加深下理解：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 执行顺序问题，考察频率挺高的，先自己想答案**</span></span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">        resolve(<span class="number">3</span>)</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(val);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<p>根据</p>
+<p>宏任务 &gt; 所有微任务 &gt; 宏任务</p>
+<p>执行结果：</p>
+<p>2，4，3，1</p>
+<p>异步就是这么个回事，简单，明了，多用于ajax，axios,settimeout啥的</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/26/异步/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-事件委托" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -452,7 +603,7 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">Google</span>][<span class="symbol"></span>]</span><br><span class="line">And then define the link:</span><br><span class="line"></span><br><span class="line">[<span class="symbol">Google</span>]: <span class="link">http://google.com/</span></span><br></pre></td></tr></table></figure>
 <p>In typora click link will expand it for editing, command+click will open the hyperlink in web browser.</p>
 <h3 id="URLs"><a href="#URLs" class="headerlink" title="URLs"></a>URLs</h3><p>Typora allows you to insert urls as links, wrapped by <code>&lt;</code>brackets<code>&gt;</code>.</p>
-<p><code>&lt;i@typora.io&gt;</code> becomes <a href="mailto:&#105;&#x40;&#x74;&#x79;&#x70;&#111;&#114;&#x61;&#x2e;&#105;&#x6f;" target="_blank" rel="noopener">&#105;&#x40;&#x74;&#x79;&#x70;&#111;&#114;&#x61;&#x2e;&#105;&#x6f;</a>.</p>
+<p><code>&lt;i@typora.io&gt;</code> becomes <a href="mailto:&#x69;&#x40;&#x74;&#x79;&#112;&#111;&#x72;&#x61;&#46;&#x69;&#x6f;" target="_blank" rel="noopener">&#x69;&#x40;&#x74;&#x79;&#112;&#111;&#x72;&#x61;&#46;&#x69;&#x6f;</a>.</p>
 <p>Typora will aslo auto link standard URLs. e.g: <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a>.</p>
 <h3 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h3><p>Image looks similar with links, but it requires an additional <code>!</code> char before the start of link. Image syntax looks like this:</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">Alt text</span>](<span class="link">/path/to/img.jpg</span>)</span><br><span class="line"></span><br><span class="line">![<span class="string">Alt text</span>](<span class="link">/path/to/img.jpg "Optional title"</span>)</span><br></pre></td></tr></table></figure>

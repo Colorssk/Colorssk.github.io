@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>obclick和addEventListen的区别 | hexo+github(blog)</title>
+  <title>异步 | hexo+github(blog)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[JS] addEventListener和onclick的区别1234567891011121314151617181920212223242526272829303132333435363738394041424344454647function a()&amp;#123;     alert(&quot;A&quot;);  &amp;#125;   var b = function()&amp;#123;      alert(&quot;B">
+  <meta name="description" content="js中的异步操作 首先先要搞清楚异步和event loop，这个event loop是js的运行环境提供的机制，它和js本身没有任何关系； 其次event loop说穿了就是在给某个异步任务指定了回调函数，那么这个回调函数会进入一个事件队列，这个回调不会立即执行，而是继续执行异步任务后面的代码，但当异步任务被触发的时候，这是线程就会调用事件队列里面的这个回调函数，待执行完后执行刚才停止处以后的代码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="obclick和addEventListen的区别">
-<meta property="og:url" content="http://yoursite.com/2018/06/25/obclick和addEventListen的区别/index.html">
+<meta property="og:title" content="异步">
+<meta property="og:url" content="http://yoursite.com/2018/06/26/异步/index.html">
 <meta property="og:site_name" content="hexo+github(blog)">
-<meta property="og:description" content="[JS] addEventListener和onclick的区别1234567891011121314151617181920212223242526272829303132333435363738394041424344454647function a()&amp;#123;     alert(&quot;A&quot;);  &amp;#125;   var b = function()&amp;#123;      alert(&quot;B">
+<meta property="og:description" content="js中的异步操作 首先先要搞清楚异步和event loop，这个event loop是js的运行环境提供的机制，它和js本身没有任何关系； 其次event loop说穿了就是在给某个异步任务指定了回调函数，那么这个回调函数会进入一个事件队列，这个回调不会立即执行，而是继续执行异步任务后面的代码，但当异步任务被触发的时候，这是线程就会调用事件队列里面的这个回调函数，待执行完后执行刚才停止处以后的代码">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-25T11:54:39.019Z">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000015317438?w=587&h=528">
+<meta property="og:updated_time" content="2018-06-26T06:24:42.870Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="obclick和addEventListen的区别">
-<meta name="twitter:description" content="[JS] addEventListener和onclick的区别1234567891011121314151617181920212223242526272829303132333435363738394041424344454647function a()&amp;#123;     alert(&quot;A&quot;);  &amp;#125;   var b = function()&amp;#123;      alert(&quot;B">
+<meta name="twitter:title" content="异步">
+<meta name="twitter:description" content="js中的异步操作 首先先要搞清楚异步和event loop，这个event loop是js的运行环境提供的机制，它和js本身没有任何关系； 其次event loop说穿了就是在给某个异步任务指定了回调函数，那么这个回调函数会进入一个事件队列，这个回调不会立即执行，而是继续执行异步任务后面的代码，但当异步任务被触发的时候，这是线程就会调用事件队列里面的这个回调函数，待执行完后执行刚才停止处以后的代码">
+<meta name="twitter:image" content="https://segmentfault.com/img/remote/1460000015317438?w=587&h=528">
   
     <link rel="alternative" href="/atom.xml" title="hexo+github(blog)" type="application/atom+xml">
   
@@ -154,28 +156,50 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-obclick和addEventListen的区别" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-异步" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      obclick和addEventListen的区别
+      异步
     </h1>
   
 
         
-        <a href="/2018/06/25/obclick和addEventListen的区别/" class="archive-article-date">
-  	<time datetime="2018-06-25T11:38:17.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
+        <a href="/2018/06/26/异步/" class="archive-article-date">
+  	<time datetime="2018-06-26T05:33:48.376Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="JS-addEventListener和onclick的区别"><a href="#JS-addEventListener和onclick的区别" class="headerlink" title="[JS] addEventListener和onclick的区别"></a>[JS] addEventListener和onclick的区别</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line"></span><br><span class="line">   alert(<span class="string">"A"</span>);  </span><br><span class="line"></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line"></span><br><span class="line">    alert(<span class="string">"B"</span>)  </span><br><span class="line"></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">dom.onclick=a  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">dom.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line"></span><br><span class="line">    b()   </span><br><span class="line"></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">//失效  </span></span><br><span class="line"></span><br><span class="line">dom.onclick=alert(<span class="string">""</span>);  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">dom.addEventListener(<span class="string">"click"</span>,a)  </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">dom.addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line"></span><br><span class="line">    b()  </span><br><span class="line"></span><br><span class="line">&#125;)  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">//先执行B，再执行A</span></span><br></pre></td></tr></table></figure>
-<p>onclick会覆盖，<br>addEventListener不会覆盖</p>
+        <h2 id="js中的异步操作"><a href="#js中的异步操作" class="headerlink" title="js中的异步操作"></a>js中的异步操作</h2><hr>
+<p>首先先要搞清楚异步和event loop，这个event loop是js的运行环境提供的机制，它和js本身没有任何关系；</p>
+<p>其次event loop说穿了就是在给某个异步任务指定了回调函数，那么这个回调函数会进入一个事件队列，这个回调不会立即执行，而是继续执行异步任务后面的代码，但当异步任务被触发的时候，这是线程就会调用事件队列里面的这个回调函数，待执行完后执行刚才停止处以后的代码</p>
+<p>看了上面的总结一下异步执行的运行机制</p>
+<p>1：所有任务都在主线程上执行，形成一个执行棧</p>
+<p>2：主线程之外，存在一个任务队列，只要异步任务有了运行结果，就在任务队列放置一个事件</p>
+<p>3：一旦执行棧中所有同步任务执行完毕，系统就会读取任务队列，那些对应的异步任务，结束等待状态，进入棧并开始执行</p>
+<p>4：主线程不断重复上面的第三步</p>
+<p>（上面的四步骤，和一开始总结的其实是一个道理，就是容易看一点）</p>
+<hr>
+<h4 id="宏任务与微任务"><a href="#宏任务与微任务" class="headerlink" title="宏任务与微任务"></a>宏任务与微任务</h4><p> 异步分为 宏任务与微任务，不同的API注册的任务一次进入队列中，等待event loop将它们依次压入执行棧中执行</p>
+<p><strong>宏任务(macrotask)：</strong>：</p>
+<p>script(整体代码)、setTimeout、setInterval、UI 渲染、 I/O、postMessage、 MessageChannel、setImmediate(Node.js 环境)</p>
+<p><strong>微任务(microtask)：</strong></p>
+<p>Promise、 MutaionObserver、process.nextTick(Node.js环境）</p>
+<p>给张网上的图片：</p>
+<p><img src="https://segmentfault.com/img/remote/1460000015317438?w=587&amp;h=528" alt="img"></p>
+<p>下面给个栗子加深下理解：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 执行顺序问题，考察频率挺高的，先自己想答案**</span></span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">        resolve(<span class="number">3</span>)</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(val);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<p>根据</p>
+<p>宏任务 &gt; 所有微任务 &gt; 宏任务</p>
+<p>执行结果：</p>
+<p>2，4，3，1</p>
+<p>异步就是这么个回事，简单，明了，多用于ajax，axios,settimeout啥的</p>
 
       
 
@@ -255,7 +279,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/25/obclick和addEventListen的区别/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/26/异步/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -269,9 +293,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/06/26/promise/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
-    <a href="/2018/06/25/cs/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">css</div>
+  
+    <a href="/2018/06/25/事件委托/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">事件委托</div>
       <i class="icon-circle-right"></i>
     </a>
   
