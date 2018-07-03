@@ -152,6 +152,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-json-server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/03/json-server/">json-server模拟后台数据</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/03/json-server/" class="archive-article-date">
+  	<time datetime="2018-07-03T12:00:15.683Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="用json-server模拟接口获取mock数据"><a href="#用json-server模拟接口获取mock数据" class="headerlink" title="用json-server模拟接口获取mock数据"></a>用json-server模拟接口获取mock数据</h1><hr>
+<p><a href="https://blog.csdn.net/stevennest/article/details/76167343（学习路径）" target="_blank" rel="noopener">https://blog.csdn.net/stevennest/article/details/76167343（学习路径）</a></p>
+<p>以下代码是来源于我用来做测试登录路由的代码节选</p>
+<p>1:npm install  json-server  –save<br>2：新建完mock-data后 cmd: json-server mock-data.json 可以运行(这里就是验证一下json-server的依赖是否安装成功)</p>
+<p>{<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">"users": [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"id"</span> : <span class="number">1</span>,</span><br><span class="line">        <span class="attr">"username"</span>: <span class="string">"aaa"</span>,</span><br><span class="line">        <span class="attr">"password"</span>: <span class="string">"aaa"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"id"</span> : <span class="number">2</span>,</span><br><span class="line">        <span class="attr">"username"</span>: <span class="string">"bbb"</span>,</span><br><span class="line">        <span class="attr">"password"</span>: <span class="string">"bbb"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"id"</span>: <span class="number">3</span>,</span><br><span class="line">        <span class="attr">"username"</span>: <span class="string">"ccc"</span>,</span><br><span class="line">        <span class="attr">"password"</span>: <span class="string">"ccc"</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>}<br>3:webpack.dev.server:<br>const jsonServer = require(‘json-server’)<br>const aipServer = jsonServer.create()<br>//mock-data.jason是自定义数据库<br>const apiRouter = jsonServer.router(‘mock-data.json’) //此处的mock-data.json是与package.json在同一目录下<br>const middlewares = jsonServer.defaults()</p>
+<p>aipServer.use(middlewares)<br>aipServer.use(apiRouter)<br>aipServer.listen(3000, () =&gt; {//仅仅是监听一下3000端口<br>  console.log(‘JSON Server is running’)<br>})</p>
+<p>4：config下面的的index.js<br>dev下面;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  proxyTable: &#123; <span class="string">'/api'</span>: &#123;</span><br><span class="line">        target: <span class="string">'http://localhost:3000'</span>,<span class="comment">//代理接口的地址，http://localhost:3000/users就可以访问json数据（users是mock-data.json里面的对面）</span></span><br><span class="line">        changeOrigin: <span class="literal">true</span>,</span><br><span class="line">        pathRewrite: &#123;</span><br><span class="line">            <span class="string">'^/api'</span>: <span class="string">'/'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>5：然后就是正常的调用阶段：<br>例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//登录界面：</span></span><br><span class="line"><span class="keyword">this</span>.$http.get(<span class="string">'http://localhost:3000/users?username='</span>+<span class="keyword">this</span>.name+<span class="string">'&amp;password='</span>+<span class="keyword">this</span>.pwd).then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123; </span><br><span class="line">						<span class="comment">//这里在isLogin方法中先判断一下后台返回的是否为空值，如果不是然后提交后台返回的值。</span></span><br><span class="line">						<span class="comment">//注意这里是个难点，Vuex与Vue-Resource结合使用。 </span></span><br><span class="line">						<span class="keyword">if</span>(response.body != <span class="literal">null</span> &amp; response.body.length &gt; <span class="number">0</span>)&#123; </span><br><span class="line">							<span class="keyword">this</span>.$store.commit(<span class="string">'isLogin'</span>,response.body[<span class="number">0</span>]);</span><br><span class="line">							<span class="keyword">this</span>.name=<span class="string">''</span></span><br><span class="line">							<span class="keyword">this</span>.pwd= <span class="string">''</span></span><br><span class="line">							<span class="built_in">console</span>.log(<span class="string">'验证成功'</span>)</span><br><span class="line">							<span class="keyword">this</span>.$router.push(&#123; <span class="attr">path</span>: <span class="string">'Main'</span> &#125;) </span><br><span class="line">						&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">							alert(<span class="string">'请输入正确的用户名和密码！！！'</span>);</span><br><span class="line">							<span class="keyword">this</span>.name=<span class="string">''</span></span><br><span class="line">							<span class="keyword">this</span>.pwd= <span class="string">''</span></span><br><span class="line">						&#125;</span><br><span class="line">						</span><br><span class="line">					&#125;).then(<span class="function">(<span class="params">error</span>)=&gt;</span> <span class="keyword">this</span>.error = error)</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">注：输入http:<span class="comment">//localhost:3000/users?username=aaa&amp;password=aaa就可以直接看到：</span></span><br><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"id"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">"username"</span>: <span class="string">"aaa"</span>,</span><br><span class="line">    <span class="string">"password"</span>: <span class="string">"aaa"</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/03/json-server/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-无缝无限旋转动画" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -364,6 +437,21 @@
   
     <article id="post-css3-display" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/27/css3-display/">css3-display</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/27/css3-display/" class="archive-article-date">
+  	<time datetime="2018-06-27T08:39:28.934Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-27</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -801,70 +889,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/06/25/事件委托/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-onclick和addEventListen的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/25/onclick和addEventListen的区别/">onclick和addEventListen的区别</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/25/onclick和addEventListen的区别/" class="archive-article-date">
-  	<time datetime="2018-06-25T11:38:17.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="JS-addEventListener和onclick的区别"><a href="#JS-addEventListener和onclick的区别" class="headerlink" title="[JS] addEventListener和onclick的区别"></a>[JS] addEventListener和onclick的区别</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line"></span><br><span class="line">   alert(<span class="string">"A"</span>);  </span><br><span class="line"></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line"></span><br><span class="line">    alert(<span class="string">"B"</span>)  </span><br><span class="line"></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">dom.onclick=a  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">dom.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line"></span><br><span class="line">    b()   </span><br><span class="line"></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">//失效  </span></span><br><span class="line"></span><br><span class="line">dom.onclick=alert(<span class="string">""</span>);  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">dom.addEventListener(<span class="string">"click"</span>,a)  </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">dom.addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line"></span><br><span class="line">    b()  </span><br><span class="line"></span><br><span class="line">&#125;)  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">//先执行B，再执行A</span></span><br></pre></td></tr></table></figure>
-<p>onclick会覆盖，<br>addEventListener不会覆盖</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/25/onclick和addEventListen的区别/">展开全文 >></a>
         </p>
       
 
