@@ -152,6 +152,268 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-无缝无限旋转动画" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/27/无缝无限旋转动画/">无缝无限旋转动画</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/27/无缝无限旋转动画/" class="archive-article-date">
+  	<time datetime="2018-06-27T09:10:28.811Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/27/无缝无限旋转动画/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-svg" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/27/svg/">css_svg</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/27/svg/" class="archive-article-date">
+  	<time datetime="2018-06-27T09:08:07.780Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/27/svg/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-解决css背景色不填充边框" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/27/解决css背景色不填充边框/">解决css背景色不填充边框</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/27/解决css背景色不填充边框/" class="archive-article-date">
+  	<time datetime="2018-06-27T08:49:36.496Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>假如定义一个div样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">width</span>: 100<span class="selector-tag">ps</span>;</span><br><span class="line"><span class="selector-tag">geight</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">background-color</span>: <span class="selector-id">#131212</span></span><br><span class="line"><span class="selector-tag">border</span>: <span class="selector-tag">solid</span> 10<span class="selector-tag">px</span> <span class="selector-tag">rgbk</span>(249,249,249)</span><br></pre></td></tr></table></figure>
+<hr>
+<p>为了让背景色只填充100px,100px部分，不填充边框10px部分</p>
+<p>解决方案：</p>
+<p>方案1：</p>
+<p>background-clip: padding-box;</p>
+<p>background-clip的值：</p>
+<p>padding-box:从padding区域开始（不含padding）开始向外裁剪背景</p>
+<p>border_box:从border区域开始（不含border）开始向外裁剪背景</p>
+<p>content-box:从content区域开始开始向外裁剪背景</p>
+<p>方案2：</p>
+<p>使用outline代替border</p>
+<p>outline:10px solid rgbk(0,0,0,0.03);</p>
+<p>但是outline可能会占据其他元素的位置</p>
+<p>所以优化之后的方案3：</p>
+<p>设置margin</p>
+<p>.div_outline{</p>
+<p>width:100px;</p>
+<p>height:100px;</p>
+<p>margin:10px,10px,10px,10px;</p>
+<p>background-color: #ffe48d;</p>
+<p>outline:dotted 10px red;</p>
+<p>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/27/解决css背景色不填充边框/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-css3-display" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="面试css基础篇-display"><a href="#面试css基础篇-display" class="headerlink" title="面试css基础篇-display"></a>面试css基础篇-display</h1><p>1:inline;</p>
+<p>2:block;</p>
+<p>3:inline_block</p>
+<p>RT:内联元素，块元素，行内块元素</p>
+<p>简单的说就是inline 是一行显示，block自带换行符，block相比与inline有width,height元素，综合一下就有了inline-block：不仅保留行内元素布局，同有块级元素的css属性（如width,height）</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/27/css3-display/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js中for of和for in的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -603,446 +865,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/06/25/onclick和addEventListen的区别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-cs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/25/cs/">css</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/25/cs/" class="archive-article-date">
-  	<time datetime="2018-06-25T07:56:38.982Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>background-image: url(“../img/cat_bg.jpg”); </p>
-<p>background-size:cover;//覆盖全部父容器</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/25/cs/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-markdown" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/25/markdown/">.md文件编写的基础语法</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/25/markdown/" class="archive-article-date">
-  	<time datetime="2018-06-25T07:34:27.439Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>因为现在的前端基本上都用上了前端构建工具，那就难免要写一些readme等等的说明性文件，但是这样的文件一般都是.md的文件，编写的语法自然跟其他格式的文件有所区别.比如说这个hexo+git搭建的博客也是通过写本地写.md的文件然后同步到github上的</p>
-<h1 id="makrdown语法"><a href="#makrdown语法" class="headerlink" title="makrdown语法"></a>makrdown语法</h1><hr>
-<p><strong>在这里我就借花献佛了：下面是其他大牛在弄编辑器的时候写的备注，我就是看着这东西写的博客，大家可以对照这个</strong></p>
-<h1 id="Markdown-For-Typora"><a href="#Markdown-For-Typora" class="headerlink" title="Markdown For Typora"></a>Markdown For Typora</h1><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><strong>Markdown</strong> is created by <a href="http://daringfireball.net/" target="_blank" rel="noopener">Daring Fireball</a>, the original guideline is <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" rel="noopener">here</a>. Its syntax, however, varies between different parsers or editors. <strong>Typora</strong> is using <a href="https://help.github.com/articles/github-flavored-markdown/" target="_blank" rel="noopener">GitHub Flavored Markdown</a>. </p>
-<p>Please note that HTML fragments in markdown source will be recognized but not parsed or rendered. Also, there may be small reformatting on the original markdown source code after saving.</p>
-<p><em>Outline</em></p>
-<ul>
-<li>TOC<br>{:toc}</li>
-</ul>
-<h2 id="Block-Elements"><a href="#Block-Elements" class="headerlink" title="Block Elements"></a>Block Elements</h2><h3 id="Paragraph-and-line-breaks"><a href="#Paragraph-and-line-breaks" class="headerlink" title="Paragraph and line breaks"></a>Paragraph and line breaks</h3><p>A paragraph is simply one or more consecutive lines of text. In markdown source code, paragraphs are separated by more than one blank lines. In Typora, you only need to press <code>Return</code> to create a new paragraph.</p>
-<p>Press <code>Shift</code> + <code>Return</code> to create a single line break. However, most markdown parser will ignore single line break, to make other markdown parsers recognize your line break, you can leave two whitespace at the end of the line, or insert <code>&lt;br/&gt;</code>.</p>
-<h3 id="Headers"><a href="#Headers" class="headerlink" title="Headers"></a>Headers</h3><p>Headers use 1-6 hash characters at the start of the line, corresponding to header levels 1-6. For example:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># This is an H1</span></span><br><span class="line"></span><br><span class="line"><span class="section">## This is an H2</span></span><br><span class="line"></span><br><span class="line"><span class="section">###### This is an H6</span></span><br></pre></td></tr></table></figure>
-<p>In typora, input ‘#’s followed by title content, and press <code>Return</code> key will create a header.</p>
-<h3 id="Blockquotes"><a href="#Blockquotes" class="headerlink" title="Blockquotes"></a>Blockquotes</h3><p>Markdown uses email-style &gt; characters for block quoting. They are presented as:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; This is a blockquote with two paragraphs. This is first paragraph.</span><br><span class="line">&gt;</span><br><span class="line">&gt; This is second pragraph.Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; This is another blockquote with one paragraph. There is three empty line to seperate two blockquote.</span><br></pre></td></tr></table></figure>
-<p>In typora, just input ‘&gt;’ followed by quote contents a block quote is  generated. Typora will insert proper ‘&gt;’ or line break for you. Block quote inside anther block quote is allowed by adding additional levels of ‘&gt;’. </p>
-<h3 id="Lists"><a href="#Lists" class="headerlink" title="Lists"></a>Lists</h3><p>Input <code>* list item 1</code> will create an un-ordered list, the <code>*</code> symbol can be replace with <code>+</code> or <code>-</code>. </p>
-<p>Input <code>1. list item 1</code> will create an ordered list, their markdown source code is like:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## un-ordered list</span></span><br><span class="line"><span class="bullet">*   </span>Red</span><br><span class="line"><span class="bullet">*   </span>Green</span><br><span class="line"><span class="bullet">*   </span>Blue</span><br><span class="line"></span><br><span class="line"><span class="section">## ordered list</span></span><br><span class="line"><span class="bullet">1.  </span>Red</span><br><span class="line"><span class="bullet">2. 	</span>Green</span><br><span class="line"><span class="bullet">3.	</span>Blue</span><br></pre></td></tr></table></figure>
-<h3 id="Task-List"><a href="#Task-List" class="headerlink" title="Task List"></a>Task List</h3><p>Task lists are lists with items marked as either [ ] or [x] (incomplete or complete). For example:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>[ ] a task list item</span><br><span class="line"><span class="bullet">- </span>[ ] list syntax required</span><br><span class="line"><span class="bullet">- </span>[ ] normal <span class="strong">**formatting**</span>, @mentions, #1234 refs</span><br><span class="line"><span class="bullet">- </span>[ ] incomplete</span><br><span class="line"><span class="bullet">- </span>[x] completed</span><br></pre></td></tr></table></figure>
-<p>You can change the complete/incomplete state by click the checkbox before the item.</p>
-<h3 id="Fenced-Code-Blocks"><a href="#Fenced-Code-Blocks" class="headerlink" title="(Fenced) Code Blocks"></a>(Fenced) Code Blocks</h3><p>Typora only support fences in Github Flavored Markdown. Original code blocks in markdown is not supported.</p>
-<p>Using fences is easy: Input ``` and press <code>return</code>. Add an optional language identifier after ``` and we’ll run it through syntax highlighting:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Here&apos;s an example:</span><br><span class="line"></span><br><span class="line">​</span><br></pre></td></tr></table></figure>
-<p>function test() {<br>  console.log(“notice the blank line before this function?”);<br>}<br>​<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">syntax highlighting:</span><br><span class="line">​```ruby</span><br><span class="line">require &apos;redcarpet&apos;</span><br><span class="line">markdown = Redcarpet.new(&quot;Hello World!&quot;)</span><br><span class="line">puts markdown.to_html</span><br><span class="line">​</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### Math Blocks</span><br><span class="line"></span><br><span class="line">You can render *LaTeX* mathematical expressions using **MathJax**.</span><br><span class="line"></span><br><span class="line">Input `$$`, then press &apos;Return&apos; key will trigger an input field which accept *Tex/LaTex* source. Following is an example:</span><br><span class="line">$$</span><br><span class="line">\mathbf&#123;V&#125;_1 \times \mathbf&#123;V&#125;_2 =  \begin&#123;vmatrix&#125; </span><br><span class="line">\mathbf&#123;i&#125; &amp; \mathbf&#123;j&#125; &amp; \mathbf&#123;k&#125; \\</span><br><span class="line">\frac&#123;\partial X&#125;&#123;\partial u&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial u&#125; &amp; 0 \\</span><br><span class="line">\frac&#123;\partial X&#125;&#123;\partial v&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial v&#125; &amp; 0 \\</span><br><span class="line">\end&#123;vmatrix&#125;</span><br><span class="line">$$</span><br><span class="line">In markdown source file, math block is *LaTeX* expression wrapped by ‘$$’ mark:</span><br><span class="line"></span><br><span class="line">```markdown</span><br><span class="line">$$</span><br><span class="line">\mathbf&#123;V&#125;_1 \times \mathbf&#123;V&#125;_2 =  \begin&#123;vmatrix&#125; </span><br><span class="line">\mathbf&#123;i&#125; &amp; \mathbf&#123;j&#125; &amp; \mathbf&#123;k&#125; \\</span><br><span class="line">\frac&#123;\partial X&#125;&#123;\partial u&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial u&#125; &amp; 0 \\</span><br><span class="line">\frac&#123;\partial X&#125;&#123;\partial v&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial v&#125; &amp; 0 \\</span><br><span class="line">\end&#123;vmatrix&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
-<h3 id="Tables"><a href="#Tables" class="headerlink" title="Tables"></a>Tables</h3><p>Input <code>| First Header  | Second Header |</code> and press <code>return</code> key will create a table with two column.</p>
-<p>After table is created, focus on that table will pop up a toolbar for table, where you can resize, align, or delete table. You can also use context menu to copy and add/delete column/row.</p>
-<p>Following descriptions can be skipped, as markdown source code for tables are generated by typora automatically.</p>
-<p>In markdown source code, they look like:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| First Header  | Second Header |</span><br><span class="line">| ------------- | ------------- |</span><br><span class="line">| Content Cell  | Content Cell  |</span><br><span class="line">| Content Cell  | Content Cell  |</span><br></pre></td></tr></table></figure>
-<p>You can also include inline Markdown such as links, bold, italics, or strikethrough.</p>
-<p>Finally, by including colons : within the header row, you can define text to be left-aligned, right-aligned, or center-aligned:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| Left-Aligned  | Center Aligned  | Right Aligned |</span><br><span class="line">| :------------ |:---------------:| -----:|</span><br><span class="line">| col 3 is      | some wordy text | $1600 |</span><br><span class="line">| col 2 is      | centered        |   $12 |</span><br><span class="line">| zebra stripes | are neat        |    $1 |</span><br></pre></td></tr></table></figure>
-<p>A colon on the left-most side indicates a left-aligned column; a colon on the right-most side indicates a right-aligned column; a colon on both sides indicates a center-aligned column.</p>
-<h3 id="Footnotes"><a href="#Footnotes" class="headerlink" title="Footnotes"></a>Footnotes</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">You can create footnotes like this[^footnote].</span><br><span class="line"></span><br><span class="line">[<span class="symbol">^footnote</span>]: <span class="link">Here is the *text* of the **footnote**.</span></span><br></pre></td></tr></table></figure>
-<p>will produce:</p>
-<p>You can create footnotes like this[^footnote].</p>
-<p>[^footnote]: Here is the <em>text</em> of the <strong>footnote</strong>.</p>
-<p>Mouse on the ‘footnote’ superscript to see content of the footnote.</p>
-<h3 id="Horizontal-Rules"><a href="#Horizontal-Rules" class="headerlink" title="Horizontal Rules"></a>Horizontal Rules</h3><p>Input <code>***</code> or <code>---</code> on a blank line and press <code>return</code> will draw a horizontal line.</p>
-<hr>
-<h3 id="YAML-Front-Matter"><a href="#YAML-Front-Matter" class="headerlink" title="YAML Front Matter"></a>YAML Front Matter</h3><p>Typora support <a href="http://jekyllrb.com/docs/frontmatter/" target="_blank" rel="noopener">YAML Front Matter</a> now. Input <code>---</code> at the top of the article and then press <code>Enter</code> will introduce one. Or insert one metadata block from the menu.</p>
-<h3 id="Table-of-Contents-TOC"><a href="#Table-of-Contents-TOC" class="headerlink" title="Table of Contents (TOC)"></a>Table of Contents (TOC)</h3><p>Input <code>[toc]</code> then press <code>Return</code> key will create a section for “Table of Contents” extracting all headers from one’s writing, its contents will be updated automatically. </p>
-<h3 id="Diagrams-Sequence-Flowchart-and-Mermaid"><a href="#Diagrams-Sequence-Flowchart-and-Mermaid" class="headerlink" title="Diagrams (Sequence, Flowchart and Mermaid)"></a>Diagrams (Sequence, Flowchart and Mermaid)</h3><p>Typora supports, <a href="https://bramp.github.io/js-sequence-diagrams/" target="_blank" rel="noopener">sequence</a>, <a href="http://flowchart.js.org/" target="_blank" rel="noopener">flowchart</a> and <a href="https://knsv.github.io/mermaid/#mermaid" target="_blank" rel="noopener">mermaid</a>, after this feature is enabled from preference panel.</p>
-<p>See this <a href="http://support.typora.io/Draw-Diagrams-With-Markdown/" target="_blank" rel="noopener">document</a> for detail.</p>
-<h2 id="Span-Elements"><a href="#Span-Elements" class="headerlink" title="Span Elements"></a>Span Elements</h2><p>Span elements will be parsed and rendered right after your typing. Moving cursor in middle of those span elements will expand those elements into markdown source. Following will explain the syntax of those span element.</p>
-<h3 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h3><p>Markdown supports two style of links: inline and reference.</p>
-<p>In both styles, the link text is delimited by [square brackets].</p>
-<p>To create an inline link, use a set of regular parentheses immediately after the link text’s closing square bracket. Inside the parentheses, put the URL where you want the link to point, along with an optional title for the link, surrounded in quotes. For example:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">This is [<span class="string">an example</span>](<span class="link">http://example.com/ "Title"</span>) inline link.</span><br><span class="line"></span><br><span class="line">[<span class="string">This link</span>](<span class="link">http://example.net/</span>) has no title attribute.</span><br></pre></td></tr></table></figure>
-<p>will produce:</p>
-<p>This is <a href="http://example.com/&quot;Title&quot;" target="_blank" rel="noopener">an example</a> inline link. (<code>&lt;p&gt;This is &lt;a href=&quot;http://example.com/&quot; title=&quot;Title&quot;&gt;</code>)</p>
-<p><a href="http://example.net/" target="_blank" rel="noopener">This link</a> has no title attribute. (<code>&lt;p&gt;&lt;a href=&quot;http://example.net/&quot;&gt;This link&lt;/a&gt; has no</code>)</p>
-<h4 id="Internal-Links"><a href="#Internal-Links" class="headerlink" title="Internal Links"></a>Internal Links</h4><p><strong>You can set the href to headers</strong>, which will create a bookmark that allow you to jump to that section after clicking. For example:</p>
-<p>Command(on Windows: Ctrl) + Click <a href="#block-elements">This link</a> will jump to header <code>Block Elements</code>. To see how to write that, please move cursor or click that link with <code>⌘</code> key pressed to expand the element into markdown source.</p>
-<h4 id="Reference-Links"><a href="#Reference-Links" class="headerlink" title="Reference Links"></a>Reference Links</h4><p>Reference-style links use a second set of square brackets, inside which you place a label of your choosing to identify the link:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">This is [<span class="string">an example</span>][<span class="symbol">id</span>] reference-style link.</span><br><span class="line"></span><br><span class="line">Then, anywhere in the document, you define your link label like this, on a line by itself:</span><br><span class="line"></span><br><span class="line">[<span class="symbol">id</span>]: <span class="link">http://example.com/  "Optional Title Here"</span></span><br></pre></td></tr></table></figure>
-<p>In typora, they will be rendered like:This is <a href="http://example.com/" title="Optional Title Here" target="_blank" rel="noopener">an example</a> reference-style link.</p>
-<p>The implicit link name shortcut allows you to omit the name of the link, in which case the link text itself is used as the name. Just use an empty set of square brackets — e.g., to link the word “Google” to the google.com web site, you could simply write:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">Google</span>][<span class="symbol"></span>]</span><br><span class="line">And then define the link:</span><br><span class="line"></span><br><span class="line">[<span class="symbol">Google</span>]: <span class="link">http://google.com/</span></span><br></pre></td></tr></table></figure>
-<p>In typora click link will expand it for editing, command+click will open the hyperlink in web browser.</p>
-<h3 id="URLs"><a href="#URLs" class="headerlink" title="URLs"></a>URLs</h3><p>Typora allows you to insert urls as links, wrapped by <code>&lt;</code>brackets<code>&gt;</code>.</p>
-<p><code>&lt;i@typora.io&gt;</code> becomes <a href="mailto:&#105;&#64;&#x74;&#121;&#112;&#111;&#x72;&#97;&#x2e;&#x69;&#111;" target="_blank" rel="noopener">&#105;&#64;&#x74;&#121;&#112;&#111;&#x72;&#97;&#x2e;&#x69;&#111;</a>.</p>
-<p>Typora will aslo auto link standard URLs. e.g: <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a>.</p>
-<h3 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h3><p>Image looks similar with links, but it requires an additional <code>!</code> char before the start of link. Image syntax looks like this:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">Alt text</span>](<span class="link">/path/to/img.jpg</span>)</span><br><span class="line"></span><br><span class="line">![<span class="string">Alt text</span>](<span class="link">/path/to/img.jpg "Optional title"</span>)</span><br></pre></td></tr></table></figure>
-<p>You are able to use drag &amp; drop to insert image from image file or we browser. And modify the markdown source code by clicking on the image. Relative path will be used if image is in same directory or sub-directory with current editing document when drag &amp; drop.</p>
-<p>For more tips on images, please read <a href="http://support.typora.io//Images/" target="_blank" rel="noopener">http://support.typora.io//Images/</a></p>
-<h3 id="Emphasis"><a href="#Emphasis" class="headerlink" title="Emphasis"></a>Emphasis</h3><p>Markdown treats asterisks (<code>*</code>) and underscores (<code>_</code>) as indicators of emphasis. Text wrapped with one <code>*</code> or <code>_</code> will be wrapped with an HTML <code>&lt;em&gt;</code> tag. E.g:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">*single asterisks*</span></span><br><span class="line"></span><br><span class="line"><span class="emphasis">_single underscores_</span></span><br></pre></td></tr></table></figure>
-<p>output: </p>
-<p><em>single asterisks</em></p>
-<p><em>single underscores</em></p>
-<p>GFM will ignores underscores in words, which is commonly used in code and names, like this:</p>
-<blockquote>
-<p>wow_great_stuff</p>
-<p>do_this_and_do_that_and_another_thing.</p>
-</blockquote>
-<p>To produce a literal asterisk or underscore at a position where it would otherwise be used as an emphasis delimiter, you can backslash escape it:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\<span class="emphasis">*this text is surrounded by literal asterisks\*</span></span><br></pre></td></tr></table></figure>
-<p>Typora recommends to use <code>*</code> symbol.</p>
-<h3 id="Strong"><a href="#Strong" class="headerlink" title="Strong"></a>Strong</h3><p>double *’s or _’s will be wrapped with an HTML <code>&lt;strong&gt;</code> tag, e.g:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**double asterisks**</span></span><br><span class="line"></span><br><span class="line"><span class="strong">__double underscores__</span></span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<p><strong>double asterisks</strong></p>
-<p><strong>double underscores</strong></p>
-<p>Typora recommends to use <code>**</code> symbol.</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><p>To indicate a span of code, wrap it with backtick quotes (`). Unlike a pre-formatted code block, a code span indicates code within a normal paragraph. For example:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Use the <span class="code">`printf()`</span> function.</span><br></pre></td></tr></table></figure>
-<p>will produce:</p>
-<p>Use the <code>printf()</code> function.</p>
-<h3 id="Strikethrough"><a href="#Strikethrough" class="headerlink" title="Strikethrough"></a>Strikethrough</h3><p>GFM adds syntax to create strikethrough text, which is missing from standard Markdown.</p>
-<p><code>~~Mistaken text.~~</code> becomes <del>Mistaken text.</del></p>
-<h3 id="Underline"><a href="#Underline" class="headerlink" title="Underline"></a>Underline</h3><p>Underline is powered by raw HTML.</p>
-<p><code>&lt;u&gt;Underline&lt;/u&gt;</code> becomes <u>Underline</u>.</p>
-<h3 id="Emoji-happy"><a href="#Emoji-happy" class="headerlink" title="Emoji :happy:"></a>Emoji :happy:</h3><p>Input emoji with syntax <code>:smile:</code>. </p>
-<p>User can trigger auto-complete suggestions for emoji by pressing <code>ESC</code> key, or trigger it automatically after enable it on preference panel. Also, input UTF8 emoji char directly from <code>Edit</code> -&gt; <code>Emoji &amp; Symbols</code> from menu bar is also supported. </p>
-<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>Typora cannot render html fragments. But typora can parse and render very limited HTML fragments, as an extension of Markdown, including:</p>
-<ul>
-<li>Underline: <code>&lt;u&gt;underline&lt;/u&gt;</code></li>
-<li>Image: <code>&lt;img src=&quot;http://www.w3.org/html/logo/img/mark-word-icon.png&quot; width=&quot;200px&quot; /&gt;</code> (And <code>width</code>, <code>height</code> attribute in HTML tag, and <code>width</code>, <code>height</code>, <code>zoom</code> style in <code>style</code> attribute will be applied.)</li>
-<li>Comments: <code>&lt;!-- This is some comments --&gt;</code></li>
-<li>Hyperlink: <code>&lt;a href=&quot;http://typora.io&quot; target=&quot;_blank&quot;&gt;link&lt;/a&gt;</code>.</li>
-</ul>
-<p>Most of their attributes, styles, or classes will be ignored. For other tags, typora will render them as raw HTML snippets. </p>
-<p>But those HTML will be exported on print or export.</p>
-<h3 id="Inline-Math"><a href="#Inline-Math" class="headerlink" title="Inline Math"></a>Inline Math</h3><p>To use this feature, first, please enable it in <code>Preference</code> Panel -&gt; <code>Markdown</code> Tab. Then use <code>$</code> to wrap TeX command, for example: <code>$\lim_{x \to \infty} \exp(-x) = 0$</code> will be rendered as LaTeX command. </p>
-<p>To trigger inline preview for inline math: input “$”, then press <code>ESC</code> key, then input TeX command, a preview tooltip will be visible like below:</p>
-<p><img src="http://typora.io/img/inline-math.gif" style="zoom:50%;"></p>
-<h3 id="Subscript"><a href="#Subscript" class="headerlink" title="Subscript"></a>Subscript</h3><p>To use this feature, first, please enable it in <code>Preference</code> Panel -&gt; <code>Markdown</code> Tab. Then use <code>~</code> to wrap subscript content, for example: <code>H~2~O</code>, <code>X~long\ text~</code>/</p>
-<h3 id="Superscript"><a href="#Superscript" class="headerlink" title="Superscript"></a>Superscript</h3><p>To use this feature, first, please enable it in <code>Preference</code> Panel -&gt; <code>Markdown</code> Tab. Then use <code>^</code> to wrap superscript content, for example: <code>X^2^</code>.</p>
-<h3 id="Highlight"><a href="#Highlight" class="headerlink" title="Highlight"></a>Highlight</h3><p>To use this feature, first, please enable it in <code>Preference</code> Panel -&gt; <code>Markdown</code> Tab. Then use <code>==</code> to wrap superscript content, for example: <code>==highlight==</code>. </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/25/markdown/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-作用域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/25/作用域/">js作用域</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/25/作用域/" class="archive-article-date">
-  	<time datetime="2018-06-25T06:03:02.800Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="js中的作用域总结"><a href="#js中的作用域总结" class="headerlink" title="js中的作用域总结"></a>js中的作用域总结</h1><hr>
-<p>1.js作用域（全局变量，局部变量）内部可以访问外部，但外部的不能访问内部的 （其实作用域就这一句话）</p>
-<p>栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">    alert(a);</span><br><span class="line">&#125;;</span><br><span class="line">aaa(); <span class="comment">//a 为外部变量即全局变量，所以可以直接访问到 结果为10</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> a=<span class="number">10</span>;  </span><br><span class="line">&#125;;</span><br><span class="line">aaa();</span><br><span class="line">alert(a); <span class="comment">//a 为函数aaa()内部变量量即局部变量，所以无法访问到</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">10</span>; </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line"> alert(a);</span><br><span class="line">&#125;;            </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> a=<span class="number">20</span>;</span><br><span class="line">aaa();</span><br><span class="line">&#125;</span><br><span class="line">bbb(); <span class="comment">//结果为10，因为aaa()函数不能访问到bbb()里面的局部变量，所以访问到的是a=10,这个全局变量。</span></span><br></pre></td></tr></table></figure>
-<p>2.不用var 定义变量时，会默认为是全局变量（不规范，不推荐）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   a=<span class="number">10</span>; </span><br><span class="line">&#125;</span><br><span class="line">aaa();</span><br><span class="line">alert(a); <span class="comment">//结果为10; </span></span><br><span class="line"><span class="comment">//等价于：</span></span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  a=<span class="number">10</span>;</span><br><span class="line">&#125;;</span><br><span class="line">aaa();</span><br><span class="line">alert(a);</span><br></pre></td></tr></table></figure>
-<p><strong>//给未声明的变量赋值，此变量就会变成全局变量；var a=b=10; 可以解析成 b=10；var a=b; 也就是b为全局变量，a为局部变量，所以外部访问a访问不到，访问b结果为10；</strong></p>
-<p><strong>所以为了避免出现这种隐患，我们在定义变量的时候把所有要定义的变量都加上var;</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">var</span> a=b=<span class="number">10</span>; <span class="comment">//这里不能和java搞混淆</span></span><br><span class="line">&#125;</span><br><span class="line"> aaa();</span><br><span class="line"> alert(a);<span class="comment">//结果为,无法访问到</span></span><br><span class="line"> alert(b);<span class="comment">//结果为10；</span></span><br></pre></td></tr></table></figure>
-<p>3.变量的查找是就近原则去寻找，定义的var变量；第二点，变量的声明被提前到作用域顶部，赋值保留在原地，如下dome;</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(a);</span><br><span class="line">  <span class="keyword">var</span> a=<span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line">aaa(); <span class="comment">//结果为：undefined  </span></span><br><span class="line"><span class="comment">/**************/</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(a);<span class="comment">//如果下面没写就输出10，但是在这个函数的作用域里面下面有，那么既然在下面就是undefined</span></span><br><span class="line">  <span class="keyword">var</span> a=<span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line">aaa(); <span class="comment">//结果为：undefined</span></span><br><span class="line">可以解析为是:</span><br><span class="line"><span class="keyword">var</span> a=<span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a; <span class="comment">//声明提前了</span></span><br><span class="line">  alert(a);</span><br><span class="line">  a=<span class="number">20</span>; <span class="comment">//赋值扔留着原地</span></span><br><span class="line">&#125;</span><br><span class="line">aaa();</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4.当参数跟局部变量重名的时候，优先级是等同的</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params">a</span>)</span>&#123; </span><br><span class="line">    alert(a);</span><br><span class="line">    <span class="keyword">var</span> a=<span class="number">20</span>;  <span class="comment">//因为 a 是形参，优先级高于 var a; 所以 局部变量a的声明其实被忽略了。</span></span><br><span class="line">&#125; </span><br><span class="line">aaa(a); <span class="comment">//结果为：10</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5.变量修改的时候另一个变量会跟着变化，但是当变量重新被定义时，则另一个不变化</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];<span class="comment">//引用类型</span></span><br><span class="line"><span class="keyword">var</span> b=a;</span><br><span class="line">b.push(<span class="number">4</span>); <span class="comment">//引用之后自然会随着变化</span></span><br><span class="line">alert(a);<span class="comment">//结果为[1,2,3,4] 当b改变的时候a也发生了改变  </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">当b重新被赋值的时候 a不会改变.示例：</span><br><span class="line"><span class="keyword">var</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> b=a;</span><br><span class="line">b=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]<span class="comment">//重新赋值就是重新分配了地址，自然不会有关联</span></span><br><span class="line">alert(a)<span class="comment">//结果为[1,2,3]</span></span><br></pre></td></tr></table></figure>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li>外部不好随便访问内，内部可以访问外部（闭包的特性），即使在函数内部不用var申明就默认是全局</li>
-<li>根据代码执行顺序（就近原则），如果在调用的下面直接undefined</li>
-<li>形参的优先级大于局部变量</li>
-<li>关于引用类型</li>
-</ul>
-<p>再补充一句：</p>
-<p>1.全局变量：声明在函数外部的变量（所有没有var直接赋值的变量都属于全局变量）</p>
-<p>2.局部变量：声明在函数内部的变量（所有没有var直接赋值的变量都属于全局变量）</p>
-<p>3：js没有块级作用域，也就是说</p>
-<p>像：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i=<span class="number">1</span>;  </span><br><span class="line"></span><br><span class="line"><span class="number">3</span>     <span class="keyword">if</span>(i==<span class="number">1</span>)&#123;  </span><br><span class="line"></span><br><span class="line"><span class="number">4</span>         <span class="keyword">var</span> b=<span class="number">2</span>;  </span><br><span class="line"></span><br><span class="line"><span class="number">5</span>     &#125;  </span><br><span class="line"></span><br><span class="line"><span class="number">6</span>     alert(b);<span class="comment">//输出2</span></span><br></pre></td></tr></table></figure>
-<p>是可以执行的</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/25/作用域/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-闭包,匿名函数：" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/24/闭包,匿名函数：/">闭包和匿名函数</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/24/闭包,匿名函数：/" class="archive-article-date">
-  	<time datetime="2018-06-24T06:34:01.324Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>闭包是啥</p>
-<p>栗子：</p>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.inc = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    n++; </span><br><span class="line">    <span class="built_in">console</span>.log(n);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> c = <span class="keyword">new</span> a();</span><br><span class="line">c.inc();  <span class="comment">//控制台输出1</span></span><br><span class="line">c.inc();  <span class="comment">//控制台输出2</span></span><br></pre></td></tr></table></figure>
-<p>有权访问另一个函数作用域内变量的函数都是闭包。这里 inc 函数访问了构造函数 a 里面的变量 n，所以形成了一个闭包。</p>
-<p>闭包就是一个函数引用另外一个函数的变量</p>
-<p>因为变量被引用着所以不会被回收，因此可以用来封装一个私有变量</p>
-<p>一个function这是声明了而没有调用，则不会被内存回收机制所回收，因此不必要的闭包只会徒增消耗</p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>闭包就是：</p>
-<ol>
-<li>函数内部内部可以访问全局变量，但是函数外部不能访问函数内部的局部变量（函数内部声明变量时一定要用var，如果就写bar=2,那么就属于全局变量）</li>
-<li>想要外部调用函数内部局部变量就return把它抛出来，并且，外部做var baz = foo()；和var blat = foo()是不相关的引用，</li>
-</ol>
-<ul>
-<li><p>匿名函数</p>
-<p>(function(){代码})()就等于执行了一个函数，只不过它是匿名的而已。如果在这个匿名函数内部想再次调用这个函数，就需要调用constructor属性了（这是Object中定义的，JS的继承机制如同Java一样保证了了所有对象都继承Object类）。</p>
-<p>​</p>
-<p>匿名函数是指那些无需定义函数名的函数。匿名函数与 拉姆达表达式 表达式（相当于熟知的箭头函数）是一回事。唯一的不同——语法形式不同。Lambda 表达式更进一步。本质上，它们的作用都是：产生方法——内联方法，也就是说，省去函数定义，直接写函数体。 </p>
-<p>​</p>
-<p>​</p>
-<p>Lambda 表达式一般形式： </p>
-<p>(input parameters) =&gt; {statement;} </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> baz1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="string">`</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">var foo = 10;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">var bar = 2;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">return foo * bar;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#125;;//这也是匿名函数，因为省去了申明，如：function baz2()&#123;&#125;</span></span><br></pre></td></tr></table></figure>
-<p>​</p>
-<p>​</p>
-<p>栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以下两个栗子都是署名过的函数内嵌匿名函数</span></span><br><span class="line">①</span><br><span class="line"></span><br><span class="line">　　<span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　　 <span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">　　　 <span class="keyword">this</span>.a = <span class="number">456</span>;</span><br><span class="line"></span><br><span class="line">　　　 (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　　 alert(a); <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line">　　alert(<span class="keyword">this</span>.a); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">　　　 &#125;)();</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> f = <span class="keyword">new</span> Foo();</span><br><span class="line"></span><br><span class="line">　　②</span><br><span class="line"></span><br><span class="line">　　<span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　　 <span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">　　　 <span class="keyword">this</span>.a = <span class="number">456</span>;</span><br><span class="line"></span><br><span class="line">　　　 (<span class="function"><span class="keyword">function</span>(<span class="params">_this</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　　 alert(a); <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line">　　alert(_this.a); <span class="comment">// 456</span></span><br><span class="line"></span><br><span class="line">　　　 &#125;)(<span class="keyword">this</span>);<span class="comment">//通过参数传递访问外层署名函数中的属性</span></span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> f = <span class="keyword">new</span> Foo();</span><br><span class="line"></span><br><span class="line">　　以上两个对比，说明：</span><br><span class="line"></span><br><span class="line">　　（<span class="number">1</span>）匿名函数可以直接访问到外层署名函数（Foo）中的变量（使用关键字<span class="keyword">var</span>定义的），但不能访问外层署名函数的属性（使用关键字<span class="keyword">this</span>定义的）；</span><br><span class="line"></span><br><span class="line">　　（<span class="number">2</span>）匿名函数中的<span class="keyword">this</span>指向的是匿名函数对象的地址，它与外层署名函数（Foo）对象的<span class="keyword">this</span>指向的地址不同；</span><br><span class="line"></span><br><span class="line">　　（<span class="number">3</span>）匿名函数若要访问外层署名函数（Foo）中的属性，可以通过参数传递的方式实现。</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//比较署名函数内嵌匿名 和 匿名函数内嵌匿名的区别</span></span><br><span class="line">　①</span><br><span class="line"></span><br><span class="line">　　<span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　　 <span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">　　　 <span class="keyword">this</span>.a = <span class="number">456</span>;</span><br><span class="line"></span><br><span class="line">　　　 (<span class="function"><span class="keyword">function</span>(<span class="params">b</span>) </span>&#123;<span class="comment">//这是实参</span></span><br><span class="line"></span><br><span class="line">　　　　　 alert(a); <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line">　　alert(b); <span class="comment">// 456</span></span><br><span class="line"></span><br><span class="line">　　　 &#125;)(<span class="keyword">this</span>.a);<span class="comment">//这是形参</span></span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> f = <span class="keyword">new</span> Foo();</span><br><span class="line"></span><br><span class="line">　　②</span><br><span class="line"></span><br><span class="line">　　(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　　 <span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">　　　 <span class="keyword">this</span>.a = <span class="number">456</span>;</span><br><span class="line"></span><br><span class="line">　　　 (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　　 alert(a); <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line">　　alert(<span class="keyword">this</span>.a); <span class="comment">// 456</span></span><br><span class="line"></span><br><span class="line">　　　 &#125;)();</span><br><span class="line"></span><br><span class="line">　　&#125;)();</span><br></pre></td></tr></table></figure>
-<p>所以：</p>
-<p>（1） 匿名函数既可以直接访问外层匿名函数中的变量，又直接可以访问外层匿名函数中的属性，而匿名函数却不可以直接访问外层已命名函数中的属性；</p>
-<p>　　（2）以上两种方式可以实现相同的功能。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当同级出现匿名函数和署名函数时</span></span><br><span class="line">①</span><br><span class="line"></span><br><span class="line">　　(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　　 <span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">this</span>.a = <span class="number">456</span>;</span><br><span class="line"></span><br><span class="line">　　　 (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　　 alert(a); <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line">　　alert(<span class="keyword">this</span>.a); <span class="comment">// 456</span></span><br><span class="line"></span><br><span class="line">　　<span class="keyword">this</span>.b = <span class="number">789</span>;</span><br><span class="line"></span><br><span class="line">　　　 &#125;)();</span><br><span class="line"></span><br><span class="line">　　　 (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　alert(<span class="keyword">this</span>.b); <span class="comment">// 789</span></span><br><span class="line"></span><br><span class="line">　　　 &#125;)();</span><br><span class="line"></span><br><span class="line">　　&#125;)();</span><br><span class="line"></span><br><span class="line">　　(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　alert(<span class="keyword">this</span>.a); <span class="comment">// 456,看上面同级（执行上下文），匿名可以直接读取里面的变量</span></span><br><span class="line"></span><br><span class="line">　　alert(<span class="keyword">this</span>.b); <span class="comment">// 789，读取上下文中匿名函数的变量然后又找内嵌的匿名函数的变量</span></span><br><span class="line"></span><br><span class="line">　　&#125;)();</span><br><span class="line"></span><br><span class="line">　　②</span><br><span class="line"></span><br><span class="line">　　<span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　　 <span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">this</span>.a = <span class="number">456</span>;</span><br><span class="line"></span><br><span class="line">　　　 (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　　 alert(a); <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line">　　alert(<span class="keyword">this</span>.a); <span class="comment">// undefined,要想有用需要传递参数</span></span><br><span class="line"></span><br><span class="line">　　<span class="keyword">this</span>.b = <span class="number">789</span>;</span><br><span class="line"></span><br><span class="line">　　　 &#125;)();</span><br><span class="line"></span><br><span class="line">　　　 (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　alert(<span class="keyword">this</span>.b); <span class="comment">// 789</span></span><br><span class="line"></span><br><span class="line">　　　 &#125;)();</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> f = <span class="keyword">new</span> Foo();</span><br><span class="line"></span><br><span class="line">　　(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　　 alert(<span class="keyword">this</span>.a); <span class="comment">// undefined，在查看执行上下文的时候只能读取匿名函数的变量，不能读取署名函数的属性（this.a是署名函数Foo定义的属性）</span></span><br><span class="line"></span><br><span class="line">　　alert(<span class="keyword">this</span>.b); <span class="comment">// 789，只要是匿名函数中定义的，无论是否被嵌套都属于执行上下文，下面的匿名函数都可以引用到 （重要）</span></span><br><span class="line"></span><br><span class="line">　　&#125;)();</span><br></pre></td></tr></table></figure>
-<p>下面的栗子说明当在{}中没有同名的局部变量的时候a,就相当于this.a</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">　　①</span><br><span class="line"></span><br><span class="line">　　<span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">this</span>.b = <span class="number">789</span>;</span><br><span class="line"></span><br><span class="line">　　&#125;)();</span><br><span class="line"></span><br><span class="line">　　(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　alert(<span class="keyword">this</span>.b); <span class="comment">// 789</span></span><br><span class="line"></span><br><span class="line">　　alert(b); <span class="comment">// 789</span></span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">　　alert(a); <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line">　　&#125;)();</span><br><span class="line"></span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> f = <span class="keyword">new</span> Foo();</span><br><span class="line"></span><br><span class="line">　　(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　alert(<span class="keyword">this</span>.b); <span class="comment">// 789</span></span><br><span class="line"></span><br><span class="line">　　alert(b); <span class="comment">// 789</span></span><br><span class="line"></span><br><span class="line">　　&#125;)();</span><br><span class="line"></span><br><span class="line">　　②</span><br><span class="line"></span><br><span class="line">　　<span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">this</span>.b = <span class="number">789</span>;</span><br><span class="line"></span><br><span class="line">　　&#125;)();</span><br><span class="line"></span><br><span class="line">　　(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　alert(<span class="keyword">this</span>.b); <span class="comment">// 789</span></span><br><span class="line"></span><br><span class="line">　　alert(b); <span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> b = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">　　alert(b); <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line">　　&#125;)();</span><br><span class="line"></span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> f = <span class="keyword">new</span> Foo();</span><br><span class="line"></span><br><span class="line">　　(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　alert(<span class="keyword">this</span>.b); <span class="comment">// 789</span></span><br><span class="line"></span><br><span class="line">　　alert(b); <span class="comment">// 789</span></span><br><span class="line"></span><br><span class="line">　　&#125;)();</span><br></pre></td></tr></table></figure>
-<p>总结：</p>
-<ul>
-<li>匿名函数能够访问外层署名函数的变量（var a）,但是不能访问其属性(this.b)//原因，this指向不同，匿名函数相当与执行函数</li>
-<li>匿名函数想要访问外层署名函数的属性（this.b）需要传递参数进入闭包</li>
-<li>匿名函数位于一个执行的上下文，也就是说一个匿名函数可以访问同级匿名函数中的属性或变量，或者外层匿名函数的属性或变量，再或者其他被嵌套的匿名函数</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/24/闭包,匿名函数：/">展开全文 >></a>
         </p>
       
 
