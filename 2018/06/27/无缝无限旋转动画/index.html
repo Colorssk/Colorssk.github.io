@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>无缝无限旋转动画 | hexo+github(blog)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="//旋转的进度条       &amp;lt;svg :width=”radius” :height=”radius” viewBox=”0 0 100 100” //起始点0，0，最后拉开的坐标100，100version=”1.1” xmlns=”http://www.w3.org/2000/svg&amp;quot;&amp;gt;//width,height表示屏幕上显示的大小，下面的两个圆只要r,cx,cy能够">
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667//旋转的进度条&amp;lt;template&amp;gt;  &amp;lt;div class=&quot;progress-circle&quot;&amp;gt;    &amp;lt;svg :w">
 <meta property="og:type" content="article">
 <meta property="og:title" content="无缝无限旋转动画">
 <meta property="og:url" content="http://yoursite.com/2018/06/27/无缝无限旋转动画/index.html">
 <meta property="og:site_name" content="hexo+github(blog)">
-<meta property="og:description" content="//旋转的进度条       &amp;lt;svg :width=”radius” :height=”radius” viewBox=”0 0 100 100” //起始点0，0，最后拉开的坐标100，100version=”1.1” xmlns=”http://www.w3.org/2000/svg&amp;quot;&amp;gt;//width,height表示屏幕上显示的大小，下面的两个圆只要r,cx,cy能够">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667//旋转的进度条&amp;lt;template&amp;gt;  &amp;lt;div class=&quot;progress-circle&quot;&amp;gt;    &amp;lt;svg :w">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-04T11:42:38.622Z">
+<meta property="og:updated_time" content="2018-07-04T11:47:12.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无缝无限旋转动画">
-<meta name="twitter:description" content="//旋转的进度条       &amp;lt;svg :width=”radius” :height=”radius” viewBox=”0 0 100 100” //起始点0，0，最后拉开的坐标100，100version=”1.1” xmlns=”http://www.w3.org/2000/svg&amp;quot;&amp;gt;//width,height表示屏幕上显示的大小，下面的两个圆只要r,cx,cy能够">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667//旋转的进度条&amp;lt;template&amp;gt;  &amp;lt;div class=&quot;progress-circle&quot;&amp;gt;    &amp;lt;svg :w">
   
     <link rel="alternative" href="/atom.xml" title="hexo+github(blog)" type="application/atom+xml">
   
@@ -185,50 +185,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>//旋转的进度条</p>
-<template><br>  <div class="progress-circle"><br><br>    &lt;svg :width=”radius” :height=”radius” viewBox=”0 0 100 100” //起始点0，0，最后拉开的坐标100，100<br>version=”1.1” xmlns=”<a href="http://www.w3.org/2000/svg&quot;&gt;//width,height表示屏幕上显示的大小，下面的两个圆只要r,cx,cy能够撑满viewBox属性就行" target="_blank" rel="noopener">http://www.w3.org/2000/svg&quot;&gt;//width,height表示屏幕上显示的大小，下面的两个圆只要r,cx,cy能够撑满viewBox属性就行</a><br>      <circle class="progress-background" r="50" cx="50" cy="50" fill="transparent"></circle>//transparent表示填充为透明<br>      &lt;circle class=”progress-bar” r=”50” cx=”50” cy=”50” fill=”transparent” :stroke-dasharray=”dashArray”//外层的描边距离  stroke表示圆的边，这里dasharray被设定为314即就是实线<br>              :stroke-dashoffset=”dashOffset”/&gt;外层的偏移<br>    <br>    <slot></slot>//插槽这个组件可以包含任何元素，因为上面的两个圆是相对定位，所以为了让插槽被包裹进去，需要把插槽的元素绝对定位即（icon-min绝对定位）<br>  </div><br></template>
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//旋转的进度条</span></span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"progress-circle"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;svg :width=<span class="string">"radius"</span> :height=<span class="string">"radius"</span> viewBox=<span class="string">"0 0 100 100"</span> <span class="comment">//起始点0，0，最后拉开的坐标100，100</span></span><br><span class="line"></span><br><span class="line">version=<span class="string">"1.1"</span> xmlns=<span class="string">"http://www.w3.org/2000/svg"</span>&gt;<span class="comment">//width,height表示屏幕上显示的大小，下面的两个圆只要r,cx,cy能够撑满viewBox属性就行</span></span><br><span class="line"></span><br><span class="line">      &lt;circle <span class="class"><span class="keyword">class</span></span>=<span class="string">"progress-background"</span> r=<span class="string">"50"</span> cx=<span class="string">"50"</span> cy=<span class="string">"50"</span> fill=<span class="string">"transparent"</span>/&gt;<span class="comment">//transparent表示填充为透明</span></span><br><span class="line">      &lt;circle <span class="class"><span class="keyword">class</span></span>=<span class="string">"progress-bar"</span> r=<span class="string">"50"</span> cx=<span class="string">"50"</span> cy=<span class="string">"50"</span> fill=<span class="string">"transparent"</span> :stroke-dasharray=<span class="string">"dashArray"</span><span class="comment">//外层的描边距离  stroke表示圆的边，这里dasharray被设定为314即就是实线</span></span><br><span class="line">              :stroke-dashoffset=<span class="string">"dashOffset"</span>/&gt;外层的偏移</span><br><span class="line">    &lt;<span class="regexp">/svg&gt;</span></span><br><span class="line"><span class="regexp">    &lt;slot&gt;&lt;/</span>slot&gt;<span class="comment">//插槽这个组件可以包含任何元素，因为上面的两个圆是相对定位，所以为了让插槽被包裹进去，需要把插槽的元素绝对定位即（icon-min绝对定位）</span></span><br><span class="line"></span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/ecmascript-6"</span>&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line"></span><br><span class="line">    props: &#123;</span><br><span class="line">      radius: &#123;</span><br><span class="line">        type: <span class="built_in">Number</span>,</span><br><span class="line">        <span class="keyword">default</span>: <span class="number">100</span></span><br><span class="line">      &#125;,</span><br><span class="line">      percent: &#123;</span><br><span class="line">        type: <span class="built_in">Number</span>,</span><br><span class="line">        <span class="keyword">default</span>: <span class="number">0</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        dashArray: <span class="built_in">Math</span>.PI * <span class="number">100</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">      dashOffset() &#123;<span class="comment">//percent为0（没开始），界面表示dashOffset为314（把圈都移开，表示不偏移，即进度条是满的）</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span> - <span class="keyword">this</span>.percent) * <span class="keyword">this</span>.dashArray</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;style scoped lang="stylus" rel="stylesheet/</span>stylus<span class="string">"&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  @import "</span>~common/stylus/variable<span class="string">"</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  .progress-circle</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    position: relative</span></span><br><span class="line"><span class="string">    circle</span></span><br><span class="line"><span class="string">      stroke-width: 8px</span></span><br><span class="line"><span class="string">      transform-origin: center</span></span><br><span class="line"><span class="string">      &amp;.progress-background</span></span><br><span class="line"><span class="string">        transform: scale(0.9)//缩放0.9确保是个圆</span></span><br><span class="line"><span class="string">        stroke: $color-theme-d//</span></span><br><span class="line"><span class="string">      &amp;.progress-bar</span></span><br><span class="line"><span class="string">        transform: scale(0.9) rotate(-90deg)//转的开始点是正上方</span></span><br><span class="line"><span class="string">        stroke: $color-theme//Stroke属性定义一条线，文本或元素轮廓颜色：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;/style&gt;</span></span><br></pre></td></tr></table></figure>
 
-<script type="text/ecmascript-6">
-  export default {
-    props: {
-      radius: {
-        type: Number,
-        default: 100
-      },
-      percent: {
-        type: Number,
-        default: 0
-      }
-    },
-    data() {
-      return {
-        dashArray: Math.PI * 100
-      }
-    },
-    computed: {
-      dashOffset() {//percent为0（没开始），界面表示dashOffset为314（把圈都移开，表示不偏移，即进度条是满的）
-        return (1 - this.percent) * this.dashArray
-      }
-    }
-  }
-</script>
-
-
-<style scoped lang="stylus" rel="stylesheet/stylus">
-  @import "~common/stylus/variable"
-
-  .progress-circle
-    position: relative
-    circle
-      stroke-width: 8px
-      transform-origin: center
-      &.progress-background
-        transform: scale(0.9)//缩放0.9确保是个圆
-        stroke: $color-theme-d//
-      &.progress-bar
-        transform: scale(0.9) rotate(-90deg)//转的开始点是正上方
-        stroke: $color-theme
-</style>
       
 
       
