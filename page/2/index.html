@@ -91,11 +91,13 @@
     			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=250 height=52 src="//music.163.com/outchain/player?type=0&id=2300333622&auto=0&height=32"></iframe>
     			
       </div>
-		
+
    	 	
 	</header>
 
 </div>
+
+		
 
 
 
@@ -160,6 +162,92 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-异步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/26/异步/">异步</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/26/异步/" class="archive-article-date">
+  	<time datetime="2018-06-26T05:33:48.376Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="js中的异步操作"><a href="#js中的异步操作" class="headerlink" title="js中的异步操作"></a>js中的异步操作</h2><hr>
+<p>首先先要搞清楚异步和event loop，这个event loop是js的运行环境提供的机制，它和js本身没有任何关系；</p>
+<p>其次event loop说穿了就是在给某个异步任务指定了回调函数，那么这个回调函数会进入一个事件队列，这个回调不会立即执行，而是继续执行异步任务后面的代码，但当异步任务被触发的时候，这是线程就会调用事件队列里面的这个回调函数，待执行完后执行刚才停止处以后的代码</p>
+<p>看了上面的总结一下异步执行的运行机制</p>
+<p>1：所有任务都在主线程上执行，形成一个执行棧</p>
+<p>2：主线程之外，存在一个任务队列，只要异步任务有了运行结果，就在任务队列放置一个事件</p>
+<p>3：一旦执行棧中所有同步任务执行完毕，系统就会读取任务队列，那些对应的异步任务，结束等待状态，进入棧并开始执行</p>
+<p>4：主线程不断重复上面的第三步</p>
+<p>（上面的四步骤，和一开始总结的其实是一个道理，就是容易看一点）</p>
+<hr>
+<h4 id="宏任务与微任务"><a href="#宏任务与微任务" class="headerlink" title="宏任务与微任务"></a>宏任务与微任务</h4><p> 异步分为 宏任务与微任务，不同的API注册的任务一次进入队列中，等待event loop将它们依次压入执行棧中执行</p>
+<p><strong>宏任务(macrotask)：</strong>：</p>
+<p>script(整体代码)、setTimeout、setInterval、UI 渲染、 I/O、postMessage、 MessageChannel、setImmediate(Node.js 环境)</p>
+<p><strong>微任务(microtask)：</strong></p>
+<p>Promise、 MutaionObserver、process.nextTick(Node.js环境）</p>
+<p>给张网上的图片：</p>
+<p><img src="https://segmentfault.com/img/remote/1460000015317438?w=587&amp;h=528" alt="img"></p>
+<p>下面给个栗子加深下理解：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 执行顺序问题，考察频率挺高的，先自己想答案**</span></span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">        resolve(<span class="number">3</span>)</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(val);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<p>根据</p>
+<p>宏任务 &gt; 所有微任务 &gt; 宏任务</p>
+<p>执行结果：</p>
+<p>2，4，3，1</p>
+<p>异步就是这么个回事，简单，明了，多用于ajax，axios,settimeout啥的</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/26/异步/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-事件委托" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -461,7 +549,7 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">Google</span>][<span class="symbol"></span>]</span><br><span class="line">And then define the link:</span><br><span class="line"></span><br><span class="line">[<span class="symbol">Google</span>]: <span class="link">http://google.com/</span></span><br></pre></td></tr></table></figure>
 <p>In typora click link will expand it for editing, command+click will open the hyperlink in web browser.</p>
 <h3 id="URLs"><a href="#URLs" class="headerlink" title="URLs"></a>URLs</h3><p>Typora allows you to insert urls as links, wrapped by <code>&lt;</code>brackets<code>&gt;</code>.</p>
-<p><code>&lt;i@typora.io&gt;</code> becomes <a href="mailto:&#105;&#x40;&#x74;&#x79;&#112;&#111;&#114;&#97;&#x2e;&#x69;&#111;" target="_blank" rel="noopener">&#105;&#x40;&#x74;&#x79;&#112;&#111;&#114;&#97;&#x2e;&#x69;&#111;</a>.</p>
+<p><code>&lt;i@typora.io&gt;</code> becomes <a href="mailto:&#x69;&#x40;&#116;&#121;&#112;&#111;&#x72;&#97;&#x2e;&#105;&#111;" target="_blank" rel="noopener">&#x69;&#x40;&#116;&#121;&#112;&#111;&#x72;&#97;&#x2e;&#105;&#111;</a>.</p>
 <p>Typora will aslo auto link standard URLs. e.g: <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a>.</p>
 <h3 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h3><p>Image looks similar with links, but it requires an additional <code>!</code> char before the start of link. Image syntax looks like this:</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">Alt text</span>](<span class="link">/path/to/img.jpg</span>)</span><br><span class="line"></span><br><span class="line">![<span class="string">Alt text</span>](<span class="link">/path/to/img.jpg "Optional title"</span>)</span><br></pre></td></tr></table></figure>

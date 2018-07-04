@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/6 | hexo+github(blog)</title>
+  <title>hexo+github(blog)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="配置路由的的格式：import Vue from ‘vue’import Router from ‘vue-router’/固定格式 import Recommend from ‘components/recommend/recommend’导入.vue文件（模版）import Singer from ‘components/singer/singer’import Rank from ‘comp">
+<meta property="og:type" content="article">
 <meta property="og:title" content="hexo+github(blog)">
-<meta property="og:url" content="http://yoursite.com/archives/2018/06/page/2/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/07/04/vue_music-配置路由/index.html">
 <meta property="og:site_name" content="hexo+github(blog)">
+<meta property="og:description" content="配置路由的的格式：import Vue from ‘vue’import Router from ‘vue-router’/固定格式 import Recommend from ‘components/recommend/recommend’导入.vue文件（模版）import Singer from ‘components/singer/singer’import Rank from ‘comp">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-04T11:11:05.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo+github(blog)">
+<meta name="twitter:description" content="配置路由的的格式：import Vue from ‘vue’import Router from ‘vue-router’/固定格式 import Recommend from ‘components/recommend/recommend’导入.vue文件（模版）import Singer from ‘components/singer/singer’import Rank from ‘comp">
   
     <link rel="alternative" href="/atom.xml" title="hexo+github(blog)" type="application/atom+xml">
   
@@ -161,187 +165,154 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vue_music-配置路由" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>配置路由的的格式<br>：import Vue from ‘vue’<br>import Router from ‘vue-router’/固定格式</p>
+<p>import Recommend from ‘components/recommend/recommend’导入.vue文件（模版）<br>import Singer from ‘components/singer/singer’<br>import Rank from ‘components/rank/rank’<br>import Search from ‘components/search/search’</p>
+<p>Vue.use(Router)//注册路由</p>
+<p>export default new Router({<br>  routes: [<br>    {<br>      path: ‘/‘,<br>      redirect: ‘/recommend’//给根目录配置路径这样页面一开始指向recommend路由<br>    },<br>    {<br>      path: ‘/recommend’,<br>      component: Recommend//配置路由路径<br>    },<br>    {<br>      path: ‘/singer’,<br>      component: Singer<br>    },<br>    {<br>      path: ‘/rank’,<br>      component: Rank<br>    },<br>    {<br>      path: ‘/search’,<br>      component: Search<br>    }<br>  ]<br>})</p>
+<p>main.js:<br>导入上面配置好的router:<br>import router from ‘./router’<br>传入事例;<br>  new vue({<br>    router<br>        ….<br>})</p>
+<p>app.vue<br>使用router组件：</p>
+<template><br>  <div id="app" @touchmove.prevent="">//屏蔽底层移动<br>    <m-header></m-header><br>    <tab></tab><br>    <keep-alive><br>      <router-view></router-view>//使用路由模版<br>    </keep-alive><br>  </div><br></template>
+
+<p>分割线————————————————————-<br>导航栏导航到各路由tab.vue</p>
+<template><br>  <div class="tab"><br>    <router-link tag="div" class="tab-item" to="/recommend">//tag默认是渲染成<a>标签<br>      <span class="tab-link">推荐</span><br>    </a></router-link><br>    <router-link tag="div" class="tab-item" to="/singer"><br>      <span class="tab-link">歌手</span><br>    </router-link><br>    <router-link tag="div" class="tab-item" to="/rank"><br>      <span class="tab-link">排行<br>      </span><br>    </router-link><br>    <router-link tag="div" class="tab-item" to="/search"><br>      <span class="tab-link">搜索</span><br>    </router-link><br>  </div><br></template>
+
+<p>追加：stylus:<br>    .tab-link<br>        padding-bottom: 5px<br>        color: $color-text-l<br>      &amp;.router-link-active//这个标签表示路由被激活的时候,&amp;表示上一级<br>        .tab-link//然后改变标签样式（选中样式发生变化）<br>          color: $color-theme<br>          border-bottom: 2px solid $color-theme</p>
+<p>栗子：<br>.el-row {<br>                margin-bottom: 20px;<br>                &amp;:last-child {<br>                        margin-bottom: 0;<br>                }<br>        }<br>等同于：<br>.el-row {<br>  margin-bottom: 20px;<br>}<br>.el-row:last-child {<br>  margin-bottom: 0;<br>}</p>
+<p>补充：</p>
+<p>router-link实现路由跳转，然后请求到的页面在router-view中渲染，keep-alive缓存路由状态</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/25/css/" class="archive-article-date">
-  	<time datetime="2018-06-25T07:56:38.982Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/25/css/">css</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/04/vue_music-配置路由/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/25/markdown/" class="archive-article-date">
-  	<time datetime="2018-06-25T07:34:27.439Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/04/vue_music-vuex/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue_music-vuex</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/25/markdown/">.md文件编写的基础语法</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/25/作用域/" class="archive-article-date">
-  	<time datetime="2018-06-25T06:03:02.800Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/25/作用域/">js作用域</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/24/闭包,匿名函数：/" class="archive-article-date">
-  	<time datetime="2018-06-24T06:34:01.324Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/24/闭包,匿名函数：/">闭包和匿名函数</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/23/js中的this指向问题/" class="archive-article-date">
-  	<time datetime="2018-06-23T09:42:27.623Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/23/js中的this指向问题/">js中this指向分析</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/23/hello-world/" class="archive-article-date">
-  	<time datetime="2018-06-23T04:56:02.082Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/23/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/06/">&laquo; Prev</a><a class="page-number" href="/archives/2018/06/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -365,8 +336,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
