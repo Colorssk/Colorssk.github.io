@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/7 | hexo+github(blog)</title>
+  <title>vue_music-vuex | hexo+github(blog)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="hexo+github(blog)">
-<meta property="og:url" content="http://yoursite.com/archives/2018/07/index.html">
+  <meta name="description" content="vuex 这是针对vue-music项目的知识点总结：vuex就是Vue.js 的中心化状态管理方案，每一个 Vuex 应用的核心就是 store(仓库) 当然有时间的同学最好看一下官方文档：https://vuex.vuejs.org/zh/guide/ 先来看一张图：  其实就是把统一的状态，分装成state，然后Mutations分装的是改变state的方法，Actions封装的一般都是异步">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue_music-vuex">
+<meta property="og:url" content="http://yoursite.com/2018/07/04/vue_music-vuex/index.html">
 <meta property="og:site_name" content="hexo+github(blog)">
+<meta property="og:description" content="vuex 这是针对vue-music项目的知识点总结：vuex就是Vue.js 的中心化状态管理方案，每一个 Vuex 应用的核心就是 store(仓库) 当然有时间的同学最好看一下官方文档：https://vuex.vuejs.org/zh/guide/ 先来看一张图：  其实就是把统一的状态，分装成state，然后Mutations分装的是改变state的方法，Actions封装的一般都是异步">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530694980966&di=7881638eec58faadf7d071bd04d10c58&imgtype=0&src=http%3A%2F%2Fwww.uml.org.cn%2FAJAX%2Fimages%2F201712073.jpeg">
+<meta property="og:updated_time" content="2018-07-04T07:26:46.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo+github(blog)">
+<meta name="twitter:title" content="vue_music-vuex">
+<meta name="twitter:description" content="vuex 这是针对vue-music项目的知识点总结：vuex就是Vue.js 的中心化状态管理方案，每一个 Vuex 应用的核心就是 store(仓库) 当然有时间的同学最好看一下官方文档：https://vuex.vuejs.org/zh/guide/ 先来看一张图：  其实就是把统一的状态，分装成state，然后Mutations分装的是改变state的方法，Actions封装的一般都是异步">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530694980966&di=7881638eec58faadf7d071bd04d10c58&imgtype=0&src=http%3A%2F%2Fwww.uml.org.cn%2FAJAX%2Fimages%2F201712073.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="hexo+github(blog)" type="application/atom+xml">
   
@@ -150,76 +156,183 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-vue_music-vuex" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      vue_music-vuex
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/04/vue_music-vuex/" class="archive-article-date">
+
+        
+        <a href="/2018/07/04/vue_music-vuex/" class="archive-article-date">
   	<time datetime="2018-07-04T06:09:30.267Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-04</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/04/vue_music-vuex/">vue_music-vuex</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h1><hr>
+<h4 id="这是针对vue-music项目的知识点总结："><a href="#这是针对vue-music项目的知识点总结：" class="headerlink" title="这是针对vue-music项目的知识点总结："></a>这是针对vue-music项目的知识点总结：</h4><p>vuex就是Vue.js 的中心化状态管理方案，每一个 <em>Vuex</em> 应用的核心就是 store(仓库)</p>
+<p>当然有时间的同学最好看一下官方文档：<a href="https://vuex.vuejs.org/zh/guide/" target="_blank" rel="noopener">https://vuex.vuejs.org/zh/guide/</a></p>
+<p>先来看一张图：</p>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1530694980966&amp;di=7881638eec58faadf7d071bd04d10c58&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.uml.org.cn%2FAJAX%2Fimages%2F201712073.jpeg" alt="img"></p>
+<p>其实就是把统一的状态，分装成state，然后Mutations分装的是改变state的方法，Actions封装的一般都是异步操作或是对需要多次mutation的操作分装，把直接提取state状态分装在getter</p>
+<p>最后把这些分装好后通过语法糖在compents里面import {mapGetters} from ‘vuex’之后在<script>中…mapGetters([  ])可以直接get到state,然后要对状态修改时，import { mapMutations} from ‘vuex’然后…mapMutations({</p>
+<p>setFullScreen: ‘SET_FULL_SCREEN’,//这里就是获取封装后的改动状态的方法</p>
+<p>…<br>})</p>
+<p>最后调用一下，就改变了状态   back() {</p>
+<p>this.setFullScreen(false)</p>
+<p>  },//这个时候就改变了state值</p>
+<p>而Actions的使用类似于Mutations就不过多解释了</p>
+<p>  先import {mapActions} from ‘vuex’</p>
+<p> method中<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">selectItem(item, index) &#123;</span><br><span class="line">  <span class="keyword">this</span>.selectPlay(&#123;<span class="comment">//调用下面action之后映射成功后的方法,传入数据改变状态</span></span><br><span class="line">    list: <span class="keyword">this</span>.songs,</span><br><span class="line">    index</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br><span class="line">...mapActions([</span><br><span class="line">  <span class="string">'selectPlay'</span>,</span><br><span class="line">  <span class="string">'randomPlay'</span></span><br><span class="line">])</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>介绍完后下面直接放出vue—music中的vuex用例</p>
+<p>先插一下嘴，首先别忘了npm装一下依赖，然后在入口文件里面先把建的store文件夹import进来，然后放入new 的vue实例中，store也要写一个入口文件index.js,具体内容看我下面的补充</p>
+<h4 id="首先是封装的state"><a href="#首先是封装的state" class="headerlink" title="首先是封装的state"></a>首先是封装的state</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;playMode&#125; <span class="keyword">from</span> <span class="string">'common/js/config'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;loadSearch&#125; <span class="keyword">from</span> <span class="string">'common/js/cache'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> state = &#123;</span><br><span class="line"></span><br><span class="line">  singer: &#123;&#125;,</span><br><span class="line"></span><br><span class="line">  playing: <span class="literal">false</span>,<span class="comment">//播放状态</span></span><br><span class="line"></span><br><span class="line">  fullScreen: <span class="literal">false</span>,<span class="comment">//播放器的展开和收起</span></span><br><span class="line"></span><br><span class="line">  playlist: [],<span class="comment">//播放的歌曲列表</span></span><br><span class="line"></span><br><span class="line">  sequenceList: [],<span class="comment">//顺序列表</span></span><br><span class="line"></span><br><span class="line">  mode: playMode.sequence,<span class="comment">//播放模式取值是0，1，2...</span></span><br><span class="line"></span><br><span class="line">  currentIndex: <span class="number">-1</span><span class="comment">//当前播放歌曲的索引</span></span><br><span class="line"></span><br><span class="line">  searchHistory: loadSearch()<span class="comment">//历史数据//初始值直接从本地存储拿数据</span></span><br><span class="line"></span><br><span class="line">  playHistory: loadPlay()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> state<span class="comment">//不抛出，留在家里能干什么？</span></span><br></pre></td></tr></table></figure>
+<h4 id="然后可以考虑在封装mutations之前先把方法名字分装一下"><a href="#然后可以考虑在封装mutations之前先把方法名字分装一下" class="headerlink" title="然后可以考虑在封装mutations之前先把方法名字分装一下"></a>然后可以考虑在封装mutations之前先把方法名字分装一下</h4><p>vuex_matutaions_type：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//记录常量</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SET_SINGER = <span class="string">'SET_SINGER'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SET_PLAYING_STATE = <span class="string">'SET_PLAYING_STATE'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SET_FULL_SCREEN = <span class="string">'SET_FULL_SCREEN'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SET_PLAYLIST = <span class="string">'SET_PLAYLIST'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SET_SEQUENCE_LIST = <span class="string">'SET_SEQUENCE_LIST'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SET_PLAY_MODE = <span class="string">'SET_PLAY_MODE'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SET_CURRENT_INDEX = <span class="string">'SET_CURRENT_INDEX'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SET_SEARCH_HISTORY = <span class="string">'SET_SEARCH_HISTORY'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SET_PLAY_HISTORY = <span class="string">'SET_PLAY_HISTORY'</span></span><br></pre></td></tr></table></figure>
+<h4 id="THEN就是封装Mutations了："><a href="#THEN就是封装Mutations了：" class="headerlink" title="THEN就是封装Mutations了："></a>THEN就是封装Mutations了：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> types <span class="keyword">from</span> <span class="string">'./mutation-types'</span><span class="comment">//引入常量, 这里的types是定义的变量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> matutaions = &#123;</span><br><span class="line">  [types.SET_SINGER](state, singer) &#123;<span class="comment">//变量名字就是.SET_SINGER（为type文件里面的常量）                                 |</span></span><br><span class="line">	                       这里有个空格</span><br><span class="line">    state.singer = singer<span class="comment">//state直接获取的是state文件下抛出的状态</span></span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">  [types.SET_PLAYING_STATE](state, flag) &#123;</span><br><span class="line">    state.playing = flag</span><br><span class="line">  &#125;,</span><br><span class="line">  [types.SET_FULL_SCREEN](state, flag) &#123;</span><br><span class="line">    state.fullScreen = flag</span><br><span class="line">  &#125;,</span><br><span class="line">  [types.SET_PLAYLIST](state, list) &#123;</span><br><span class="line">    state.playlist = list</span><br><span class="line">  &#125;,</span><br><span class="line">  [types.SET_SEQUENCE_LIST](state, list) &#123;</span><br><span class="line">    state.sequenceList = list</span><br><span class="line">  &#125;,</span><br><span class="line">  [types.SET_PLAY_MODE](state, mode) &#123;</span><br><span class="line">    state.mode = mode</span><br><span class="line">  &#125;,</span><br><span class="line">  [types.SET_CURRENT_INDEX](state, index) &#123;</span><br><span class="line">    state.currentIndex = index</span><br><span class="line">  &#125;</span><br><span class="line">  [types.SET_SEARCH_HISTORY](state, history) &#123;</span><br><span class="line">    state.searchHistory = history</span><br><span class="line">  &#125;</span><br><span class="line">  [types.SET_PLAY_HISTORY](state, history) &#123;</span><br><span class="line">    state.playHistory = history</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> matutaions</span><br></pre></td></tr></table></figure>
+<h4 id="然后是Actions的封装"><a href="#然后是Actions的封装" class="headerlink" title="然后是Actions的封装"></a>然后是Actions的封装</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> types <span class="keyword">from</span> <span class="string">'./mutation-types'</span></span><br><span class="line"><span class="keyword">import</span> &#123;playMode&#125; <span class="keyword">from</span> <span class="string">'common/js/config'</span><span class="comment">//获取一下播放模式</span></span><br><span class="line"><span class="keyword">import</span> &#123;shuffle&#125; <span class="keyword">from</span> <span class="string">'common/js/util'</span></span><br><span class="line"><span class="keyword">import</span> &#123;saveSearch, clearSearch, deleteSearch&#125; <span class="keyword">from</span> <span class="string">'common/js/cache'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findIndex</span>(<span class="params">list, song</span>) </span>&#123;<span class="comment">//这里的findIndex是为了</span></span><br><span class="line">  <span class="keyword">return</span> list.findIndex(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;<span class="comment">//es6语法list数组自带findeindex方法参数是一个方法，可以遍历获取list所有参数item</span></span><br><span class="line">    <span class="keyword">return</span> item.id === song.id<span class="comment">//如果是true就执行findindex(item)找到这个索引</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//选择播放</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> selectPlay = <span class="function"><span class="keyword">function</span> (<span class="params">&#123;commit,state&#125;, &#123;list, index&#125;</span>) </span>&#123;</span><br><span class="line"><span class="comment">//传进来的参数两个对象，commit是方法,state是属性,state可以不要</span></span><br><span class="line">  commit(types.SET_SEQUENCE_LIST, list)<span class="comment">//commit</span></span><br><span class="line">  <span class="keyword">if</span> (state.mode === playMode.random) &#123;</span><br><span class="line">    <span class="keyword">let</span> randomList = shuffle(list)</span><br><span class="line">    commit(types.SET_PLAYLIST, randomList)</span><br><span class="line">    index = findIndex(randomList, list[index])<span class="comment">//重新定义index因为监听到的currentsong会在SET_PLAYLIST时候发生变化，所以为保持正在play的索引不变所以要finindex，list[index]是歌曲列表的歌曲（有属性id），返回的是randomList的索引</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    commit(types.SET_PLAYLIST, list)</span><br><span class="line">  &#125;</span><br><span class="line">  commit(types.SET_CURRENT_INDEX, index)<span class="comment">//提交这些mutation</span></span><br><span class="line">  commit(types.SET_FULL_SCREEN, <span class="literal">true</span>)</span><br><span class="line">  commit(types.SET_PLAYING_STATE, <span class="literal">true</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> randomPlay = <span class="function"><span class="keyword">function</span> (<span class="params">&#123;commit&#125;, &#123;list&#125;</span>) </span>&#123;</span><br><span class="line">  commit(types.SET_PLAY_MODE, playMode.random)</span><br><span class="line">  commit(types.SET_SEQUENCE_LIST, list)</span><br><span class="line">  <span class="keyword">let</span> randomList = shuffle(list)<span class="comment">//洗牌一下再放入playlist</span></span><br><span class="line">  commit(types.SET_PLAYLIST, randomList)</span><br><span class="line">  commit(types.SET_CURRENT_INDEX, <span class="number">0</span>)<span class="comment">//从第一个开始</span></span><br><span class="line">  commit(types.SET_FULL_SCREEN, <span class="literal">true</span>)</span><br><span class="line">  commit(types.SET_PLAYING_STATE, <span class="literal">true</span>)<span class="comment">//playing状态就为true watch后播放</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//action中用于在搜索页面中点击歌曲后播放歌曲</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> insertSong = <span class="function"><span class="keyword">function</span> (<span class="params">&#123;commit, state&#125;, song</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> playlist = state.playlist.slice()<span class="comment">//创建的是副本，否则因为在mutation外部调用回调函数会报错 </span></span><br><span class="line">  <span class="keyword">let</span> sequenceList = state.sequenceList.slice()</span><br><span class="line">  <span class="keyword">let</span> currentIndex = state.currentIndex</span><br><span class="line">  <span class="comment">// 记录当前歌曲</span></span><br><span class="line">  <span class="keyword">let</span> currentSong = playlist[currentIndex]<span class="comment">//对playlist操作</span></span><br><span class="line">  <span class="comment">// 查找当前列表中是否有待插入的歌曲并返回其索引</span></span><br><span class="line">  <span class="keyword">let</span> fpIndex = findIndex(playlist, song)</span><br><span class="line">  <span class="comment">// 因为是插入歌曲，所以索引+1</span></span><br><span class="line">  currentIndex++</span><br><span class="line">  <span class="comment">// 插入这首歌到当前索引位置//这里的插入导致下面的索引已经发生改变所以有下面的判断</span></span><br><span class="line">  playlist.splice(currentIndex, <span class="number">0</span>, song)<span class="comment">//插入或删除，参一表示插入位置，参二表示删除个数吗，参三表示插入内容</span></span><br><span class="line">  <span class="comment">// 如果已经包含了这首歌</span></span><br><span class="line">  <span class="keyword">if</span> (fpIndex &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果当前插入的序号大于列表中的序号</span></span><br><span class="line">    <span class="keyword">if</span> (currentIndex &gt; fpIndex) &#123;</span><br><span class="line">      playlist.splice(fpIndex, <span class="number">1</span>)</span><br><span class="line">      currentIndex--</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      playlist.splice(fpIndex + <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> currentSIndex = findIndex(sequenceList, currentSong) + <span class="number">1</span><span class="comment">//对sequenceList操作</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> fsIndex = findIndex(sequenceList, song)</span><br><span class="line"></span><br><span class="line">  sequenceList.splice(currentSIndex, <span class="number">0</span>, song)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (fsIndex &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (currentSIndex &gt; fsIndex) &#123;</span><br><span class="line">      sequenceList.splice(fsIndex, <span class="number">1</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      sequenceList.splice(fsIndex + <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  commit(types.SET_PLAYLIST, playlist)<span class="comment">//这里把副本的数据提交到mutation中</span></span><br><span class="line">  commit(types.SET_SEQUENCE_LIST, sequenceList)</span><br><span class="line">  commit(types.SET_CURRENT_INDEX, currentIndex)</span><br><span class="line">  commit(types.SET_FULL_SCREEN, <span class="literal">true</span>)</span><br><span class="line">  commit(types.SET_PLAYING_STATE, <span class="literal">true</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> saveSearchHistory = <span class="function"><span class="keyword">function</span> (<span class="params">&#123;commit&#125;, query</span>) </span>&#123;<span class="comment">//保存历史</span></span><br><span class="line">  commit(types.SET_SEARCH_HISTORY, saveSearch(query))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> deleteSearchHistory = <span class="function"><span class="keyword">function</span> (<span class="params">&#123;commit&#125;, query</span>) </span>&#123;</span><br><span class="line">  commit(types.SET_SEARCH_HISTORY, deleteSearch(query))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> clearSearchHistory = <span class="function"><span class="keyword">function</span> (<span class="params">&#123;commit&#125;</span>) </span>&#123;</span><br><span class="line">  commit(types.SET_SEARCH_HISTORY, clearSearch())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> deleteSong = <span class="function"><span class="keyword">function</span> (<span class="params">&#123;commit, state&#125;, song</span>) </span>&#123;<span class="comment">//playlist中删除个播放列表中的歌曲</span></span><br><span class="line">  <span class="keyword">let</span> playlist = state.playlist.slice()</span><br><span class="line">  <span class="keyword">let</span> sequenceList = state.sequenceList.slice()</span><br><span class="line">  <span class="keyword">let</span> currentIndex = state.currentIndex</span><br><span class="line">  <span class="keyword">let</span> pIndex = findIndex(playlist, song)</span><br><span class="line">  playlist.splice(pIndex, <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">let</span> sIndex = findIndex(sequenceList, song)</span><br><span class="line">  sequenceList.splice(sIndex, <span class="number">1</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (currentIndex &gt; pIndex || currentIndex === playlist.length) &#123;<span class="comment">//考虑删除后currentindex可能会有变化</span></span><br><span class="line">    currentIndex--</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  commit(types.SET_PLAYLIST, playlist)</span><br><span class="line">  commit(types.SET_SEQUENCE_LIST, sequenceList)</span><br><span class="line">  commit(types.SET_CURRENT_INDEX, currentIndex)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!playlist.length) &#123;<span class="comment">//都删完了就把PLAYING_STATE置为false</span></span><br><span class="line">    commit(types.SET_PLAYING_STATE, <span class="literal">false</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    commit(types.SET_PLAYING_STATE, <span class="literal">true</span>)<span class="comment">//切换过后继续播放</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> deleteSongList = <span class="function"><span class="keyword">function</span> (<span class="params">&#123;commit&#125;</span>) </span>&#123;<span class="comment">//删除所有playlist</span></span><br><span class="line">  commit(types.SET_CURRENT_INDEX, <span class="number">-1</span>)</span><br><span class="line">  commit(types.SET_PLAYLIST, [])</span><br><span class="line">  commit(types.SET_SEQUENCE_LIST, [])</span><br><span class="line">  commit(types.SET_PLAYING_STATE, <span class="literal">false</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> savePlayHistory = <span class="function"><span class="keyword">function</span> (<span class="params">&#123;commit&#125;, song</span>) </span>&#123;</span><br><span class="line">  commit(types.SET_PLAY_HISTORY, savePlay(song))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="当然还要分装一个获取状态的getters："><a href="#当然还要分装一个获取状态的getters：" class="headerlink" title="当然还要分装一个获取状态的getters："></a>当然还要分装一个获取状态的getters：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//getters是一种映射</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> singer = <span class="function"><span class="params">state</span> =&gt;</span> state.singer<span class="comment">//不用import</span></span><br><span class="line"><span class="comment">//　a.当无参数时或有多个参数时，需要用括号（）括起来。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//（x, y）=&gt; x + y;</span></span><br><span class="line"><span class="comment">//　　　　b.当省略&#123;&#125;和return时，返回了一个对象，对象要用括号（）括起来。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//x=&gt; （&#123;color："red"&#125;）;</span></span><br><span class="line"><span class="comment">//上面的箭头函数相当于：const singer = function(state) &#123;return state.singer;&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> playing = <span class="function"><span class="params">state</span> =&gt;</span> state.playing</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> fullScreen = <span class="function"><span class="params">state</span> =&gt;</span> state.fullScreen</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> playlist = <span class="function"><span class="params">state</span> =&gt;</span> state.playlist</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> sequenceList = <span class="function"><span class="params">state</span> =&gt;</span> state.sequenceList</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> mode = <span class="function"><span class="params">state</span> =&gt;</span> state.mode</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> currentIndex = <span class="function"><span class="params">state</span> =&gt;</span> state.currentIndex</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> currentSong = <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> state.playlist[state.currentIndex] || &#123;&#125;<span class="comment">//用||  return的时候若是空就反空数组</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> searchHistory = <span class="function"><span class="params">state</span> =&gt;</span> state.searchHistory</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> playHistory = <span class="function"><span class="params">state</span> =&gt;</span> state.playHistory</span><br></pre></td></tr></table></figure>
+<p>####　补充：封装之后当然就是注册加载引用</p>
+<p>store文件夹下面新建index.js入口文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actions <span class="keyword">from</span> <span class="string">'./actions'</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> getters <span class="keyword">from</span> <span class="string">'./getters'</span><span class="comment">// 两个文件要用* as  变量名</span></span><br><span class="line"><span class="keyword">import</span> state <span class="keyword">from</span> <span class="string">'./state'</span></span><br><span class="line"><span class="keyword">import</span> mutations <span class="keyword">from</span> <span class="string">'./mutations'</span></span><br><span class="line"><span class="keyword">import</span> createLogger <span class="keyword">from</span> <span class="string">'vuex/dist/logger'</span><span class="comment">//这是日志记录以前现在的数据状态</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> debug = process.env.NODE_ENV !== <span class="string">'production'</span><span class="comment">//调试工具，看state时候被mutations修改的//npm run dev的时候是NODE_ENV环境，npm runbuild是production环境 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;<span class="comment">//单例模式</span></span><br><span class="line">  actions,</span><br><span class="line">  getters,</span><br><span class="line">  state,</span><br><span class="line">  mutations,</span><br><span class="line">  strict: debug,<span class="comment">//检测state的修改是否来源于mutations</span></span><br><span class="line">  plugins: debug ? [createLogger()] : []<span class="comment">//这个记住就行</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">这里的入口文件写完以后，main.js作为入口文件也要引入store(vuex的初始化配置)</span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'./store'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</script></p>
+      
 
-        <div class="article-info info-on-right">
-          
-          
-
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/04/vue_music-vuex/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/03/json-server/" class="archive-article-date">
-  	<time datetime="2018-07-03T12:00:15.683Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-03</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/03/json-server/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">json-server模拟后台数据</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/03/json-server/">json-server模拟后台数据</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -242,8 +355,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
