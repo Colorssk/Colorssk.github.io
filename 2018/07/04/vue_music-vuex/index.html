@@ -16,7 +16,7 @@
 <meta property="og:description" content="vuex 这是针对vue-music项目的知识点总结：vuex就是Vue.js 的中心化状态管理方案，每一个 Vuex 应用的核心就是 store(仓库) 当然有时间的同学最好看一下官方文档：https://vuex.vuejs.org/zh/guide/ 先来看一张图：  其实就是把统一的状态，分装成state，然后Mutations分装的是改变state的方法，Actions封装的一般都是异步">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530694980966&di=7881638eec58faadf7d071bd04d10c58&imgtype=0&src=http%3A%2F%2Fwww.uml.org.cn%2FAJAX%2Fimages%2F201712073.jpeg">
-<meta property="og:updated_time" content="2018-07-04T07:26:46.459Z">
+<meta property="og:updated_time" content="2018-07-04T07:40:07.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue_music-vuex">
 <meta name="twitter:description" content="vuex 这是针对vue-music项目的知识点总结：vuex就是Vue.js 的中心化状态管理方案，每一个 Vuex 应用的核心就是 store(仓库) 当然有时间的同学最好看一下官方文档：https://vuex.vuejs.org/zh/guide/ 先来看一张图：  其实就是把统一的状态，分装成state，然后Mutations分装的是改变state的方法，Actions封装的一般都是异步">
@@ -93,8 +93,17 @@
 		        
 			</div>
 		</nav>
-	</header>		
+<div style="position:absolute; bottom:17%; left:auto; width:85%">
+    			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=250 height=52 src="//music.163.com/outchain/player?type=0&id=2300333622&auto=0&height=32"></iframe>
+    			
+      </div>
+		
+   	 	
+	</header>
+
 </div>
+
+
 
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
@@ -182,7 +191,7 @@
 <p>先来看一张图：</p>
 <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1530694980966&amp;di=7881638eec58faadf7d071bd04d10c58&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.uml.org.cn%2FAJAX%2Fimages%2F201712073.jpeg" alt="img"></p>
 <p>其实就是把统一的状态，分装成state，然后Mutations分装的是改变state的方法，Actions封装的一般都是异步操作或是对需要多次mutation的操作分装，把直接提取state状态分装在getter</p>
-<p>最后把这些分装好后通过语法糖在compents里面import {mapGetters} from ‘vuex’之后在<script>中…mapGetters([  ])可以直接get到state,然后要对状态修改时，import { mapMutations} from ‘vuex’然后…mapMutations({</p>
+<p>最后把这些分装好后通过语法糖在compents里面import {mapGetters} from ‘vuex’之后在script标签中…mapGetters([  ])可以直接get到state,然后要对状态修改时，import { mapMutations} from ‘vuex’然后…mapMutations({</p>
 <p>setFullScreen: ‘SET_FULL_SCREEN’,//这里就是获取封装后的改动状态的方法</p>
 <p>…<br>})</p>
 <p>最后调用一下，就改变了状态   back() {</p>
@@ -204,7 +213,7 @@
 <p>store文件夹下面新建index.js入口文件</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actions <span class="keyword">from</span> <span class="string">'./actions'</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> getters <span class="keyword">from</span> <span class="string">'./getters'</span><span class="comment">// 两个文件要用* as  变量名</span></span><br><span class="line"><span class="keyword">import</span> state <span class="keyword">from</span> <span class="string">'./state'</span></span><br><span class="line"><span class="keyword">import</span> mutations <span class="keyword">from</span> <span class="string">'./mutations'</span></span><br><span class="line"><span class="keyword">import</span> createLogger <span class="keyword">from</span> <span class="string">'vuex/dist/logger'</span><span class="comment">//这是日志记录以前现在的数据状态</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> debug = process.env.NODE_ENV !== <span class="string">'production'</span><span class="comment">//调试工具，看state时候被mutations修改的//npm run dev的时候是NODE_ENV环境，npm runbuild是production环境 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;<span class="comment">//单例模式</span></span><br><span class="line">  actions,</span><br><span class="line">  getters,</span><br><span class="line">  state,</span><br><span class="line">  mutations,</span><br><span class="line">  strict: debug,<span class="comment">//检测state的修改是否来源于mutations</span></span><br><span class="line">  plugins: debug ? [createLogger()] : []<span class="comment">//这个记住就行</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">这里的入口文件写完以后，main.js作为入口文件也要引入store(vuex的初始化配置)</span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'./store'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</script></p>
+
       
 
       
