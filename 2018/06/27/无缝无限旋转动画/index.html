@@ -8,14 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>无缝无限旋转动画 | hexo+github(blog)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="//旋转的进度条       &amp;lt;svg :width=”radius” :height=”radius” viewBox=”0 0 100 100” //起始点0，0，最后拉开的坐标100，100version=”1.1” xmlns=”http://www.w3.org/2000/svg&amp;quot;&amp;gt;//width,height表示屏幕上显示的大小，下面的两个圆只要r,cx,cy能够">
+<meta property="og:type" content="article">
 <meta property="og:title" content="无缝无限旋转动画">
 <meta property="og:url" content="http://yoursite.com/2018/06/27/无缝无限旋转动画/index.html">
 <meta property="og:site_name" content="hexo+github(blog)">
+<meta property="og:description" content="//旋转的进度条       &amp;lt;svg :width=”radius” :height=”radius” viewBox=”0 0 100 100” //起始点0，0，最后拉开的坐标100，100version=”1.1” xmlns=”http://www.w3.org/2000/svg&amp;quot;&amp;gt;//width,height表示屏幕上显示的大小，下面的两个圆只要r,cx,cy能够">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-27T09:11:07.267Z">
+<meta property="og:updated_time" content="2018-07-04T11:42:38.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无缝无限旋转动画">
+<meta name="twitter:description" content="//旋转的进度条       &amp;lt;svg :width=”radius” :height=”radius” viewBox=”0 0 100 100” //起始点0，0，最后拉开的坐标100，100version=”1.1” xmlns=”http://www.w3.org/2000/svg&amp;quot;&amp;gt;//width,height表示屏幕上显示的大小，下面的两个圆只要r,cx,cy能够">
   
     <link rel="alternative" href="/atom.xml" title="hexo+github(blog)" type="application/atom+xml">
   
@@ -182,7 +185,50 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>//旋转的进度条</p>
+<template><br>  <div class="progress-circle"><br><br>    &lt;svg :width=”radius” :height=”radius” viewBox=”0 0 100 100” //起始点0，0，最后拉开的坐标100，100<br>version=”1.1” xmlns=”<a href="http://www.w3.org/2000/svg&quot;&gt;//width,height表示屏幕上显示的大小，下面的两个圆只要r,cx,cy能够撑满viewBox属性就行" target="_blank" rel="noopener">http://www.w3.org/2000/svg&quot;&gt;//width,height表示屏幕上显示的大小，下面的两个圆只要r,cx,cy能够撑满viewBox属性就行</a><br>      <circle class="progress-background" r="50" cx="50" cy="50" fill="transparent"></circle>//transparent表示填充为透明<br>      &lt;circle class=”progress-bar” r=”50” cx=”50” cy=”50” fill=”transparent” :stroke-dasharray=”dashArray”//外层的描边距离  stroke表示圆的边，这里dasharray被设定为314即就是实线<br>              :stroke-dashoffset=”dashOffset”/&gt;外层的偏移<br>    <br>    <slot></slot>//插槽这个组件可以包含任何元素，因为上面的两个圆是相对定位，所以为了让插槽被包裹进去，需要把插槽的元素绝对定位即（icon-min绝对定位）<br>  </div><br></template>
+
+<script type="text/ecmascript-6">
+  export default {
+    props: {
+      radius: {
+        type: Number,
+        default: 100
+      },
+      percent: {
+        type: Number,
+        default: 0
+      }
+    },
+    data() {
+      return {
+        dashArray: Math.PI * 100
+      }
+    },
+    computed: {
+      dashOffset() {//percent为0（没开始），界面表示dashOffset为314（把圈都移开，表示不偏移，即进度条是满的）
+        return (1 - this.percent) * this.dashArray
+      }
+    }
+  }
+</script>
+
+
+<style scoped lang="stylus" rel="stylesheet/stylus">
+  @import "~common/stylus/variable"
+
+  .progress-circle
+    position: relative
+    circle
+      stroke-width: 8px
+      transform-origin: center
+      &.progress-background
+        transform: scale(0.9)//缩放0.9确保是个圆
+        stroke: $color-theme-d//
+      &.progress-bar
+        transform: scale(0.9) rotate(-90deg)//转的开始点是正上方
+        stroke: $color-theme
+</style>
       
 
       
